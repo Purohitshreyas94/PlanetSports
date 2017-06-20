@@ -1,18 +1,14 @@
 package com.niit.PlanetSportsBackend.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Query;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.niit.PlanetSportsBackend.model.Category;
 
@@ -49,7 +45,7 @@ public class CategoryDAO
 		sessionFactory.getCurrentSession().delete(category);
 	}
 	
-    
+  /*  
 	public List<Category> getCategoryDetails()
 	{
 		Session session=sessionFactory.openSession();
@@ -57,7 +53,7 @@ public class CategoryDAO
 		List<Category> list=query.list();
 		session.close();
 		return list;
-	}
+	}*/
 	
 }
 
