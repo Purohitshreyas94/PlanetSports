@@ -24,10 +24,10 @@ public class SupplierTestCase
 	    
 	  //Inserting Test Case
 	  		Supplier supplier=new Supplier();
-	  		supplier.setSuppname("E-kart");
+	  		supplier.setSuppname("Blue Dart");
 	  		supplier.setAddress("Mumbai...");
 	  		
-	  		supplierDAO.insertUpdateCategory(supplier);
+	  		supplierDAO.insertUpdateSupplier(supplier);
 	  		System.out.println("Supplier Inserted");
 	  		
 	  		//Retrieval TestCase

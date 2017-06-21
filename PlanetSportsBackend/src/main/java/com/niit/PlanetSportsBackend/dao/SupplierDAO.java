@@ -24,7 +24,7 @@ public class SupplierDAO
 	}
 	
 	@Transactional
-	public void insertUpdateCategory(Supplier supplier)
+	public void insertUpdateSupplier(Supplier supplier)
 	{
 		Session session=sessionFactory.getCurrentSession();
 		session.saveOrUpdate(supplier);
@@ -39,7 +39,7 @@ public class SupplierDAO
     }
     
     @Transactional
-	public void deleteCategory(Supplier supplier)
+	public void deleteSupplier(Supplier supplier)
 	{
 		sessionFactory.getCurrentSession().delete(supplier);
 	}
