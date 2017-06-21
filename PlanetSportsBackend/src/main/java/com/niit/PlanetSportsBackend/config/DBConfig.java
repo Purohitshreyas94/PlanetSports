@@ -16,8 +16,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.PlanetSportsBackend.dao.CategoryDAO;
 import com.niit.PlanetSportsBackend.dao.SupplierDAO;
+import com.niit.PlanetSportsBackend.dao.UserDetailDAO;
+import com.niit.PlanetSportsBackend.dao.ProductDAO;
 import com.niit.PlanetSportsBackend.model.Category;
+import com.niit.PlanetSportsBackend.model.Product;
 import com.niit.PlanetSportsBackend.model.Supplier;
+import com.niit.PlanetSportsBackend.model.UserDetail;
 
 @Configuration
 @ComponentScan("com.niit.PlanetSportsBackend")
@@ -54,6 +58,8 @@ public class DBConfig
 		   System.out.println("------Factory Builder object created------");
 		   sessionBuilder.addAnnotatedClass(Category.class);
 		   sessionBuilder.addAnnotatedClass(Supplier.class);
+		   sessionBuilder.addAnnotatedClass(Product.class);
+		   sessionBuilder.addAnnotatedClass(UserDetail.class);
 		   System.out.println("------Session Factory  object creation------");
 		   SessionFactory sessionFactory=sessionBuilder.buildSessionFactory();
 		   System.out.println("------Session factory object created------");
@@ -76,11 +82,11 @@ public class DBConfig
 	   @Bean(name="categoryDAO")
 	   public CategoryDAO getCategoryDAO(SessionFactory sessionFactory)
 	   {
-		   System.out.println("-- CategoryDAO Object Creation--");
+		   System.out.println("-- Category DAO Object Creation--");
 		   return new CategoryDAO(sessionFactory);
 	   }
 	   
-	   @Autowired
+	  @Autowired
 	   @Bean(name="supplierDAO")
 	   public SupplierDAO getSupplierDAO(SessionFactory sessionFactory)
 	   {
@@ -88,6 +94,24 @@ public class DBConfig
         return new SupplierDAO(sessionFactory);
 		   
 	   }
+	   @Autowired
+	   @Bean(name="productDAO")
+	   public ProductDAO getProductDAO(SessionFactory sessionFactory)
+	   {
+        System.out.println("-----Product DAO object Creation------");
+        return new ProductDAO(sessionFactory);
+		   
+	   }
+	  
+	   @Autowired
+	   @Bean(name="userdetailDAO")
+	   public UserDetailDAO getUserDetailDAO(SessionFactory sessionFactory)
+	   {
+        System.out.println("-----Product DAO object Creation------");
+        return new UserDetailDAO(sessionFactory);
+		   
+	   }
+	   
 }
 
 

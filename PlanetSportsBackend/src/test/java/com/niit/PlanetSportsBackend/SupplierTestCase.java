@@ -24,8 +24,8 @@ public class SupplierTestCase
 	    
 	  //Inserting Test Case
 	  		Supplier supplier=new Supplier();
-	  		supplier.setSuppname("BuleDart");
-	  		supplier.setAddress("The all Products will be delivered by BuleDart Logistics ..");
+	  		supplier.setSuppname("E-kart");
+	  		supplier.setAddress("Mumbai...");
 	  		
 	  		supplierDAO.insertUpdateCategory(supplier);
 	  		System.out.println("Supplier Inserted");

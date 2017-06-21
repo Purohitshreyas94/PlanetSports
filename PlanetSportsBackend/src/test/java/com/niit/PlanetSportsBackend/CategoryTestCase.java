@@ -22,8 +22,8 @@ public class CategoryTestCase
 		
 		//Inserting Test Case
 		Category category=new Category();
-		category.setCatname("Cricket");
-		category.setCatdesc("This Category contains all accessories of Cricket..");
+		category.setCatname("BasketBall");
+		category.setCatdesc("This Category contains all accessories of BaskeBall..");
 		
 		categoryDAO.insertUpdateCategory(category);
 		System.out.println("Category Inserted");
