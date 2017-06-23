@@ -25,7 +25,7 @@ public class UserDetailDAO
 	}
 	
     @Transactional
-	public void insertUpdateCategory(UserDetail userdetail)
+	public void insertUpdateUserDetail(UserDetail userdetail)
 	{
 		Session session=sessionFactory.getCurrentSession();
 		session.saveOrUpdate(userdetail);
@@ -39,14 +39,6 @@ public class UserDetailDAO
     	return userdetail;
     }
     
-    
-    @Transactional
-	public void deleteUserDetail(UserDetail userdetail)
-	{
-		sessionFactory.getCurrentSession().delete(userdetail);
-	}
-	
-  
 	public List<UserDetail> getUserDetailDetails()
 	{
 		Session session=sessionFactory.openSession();

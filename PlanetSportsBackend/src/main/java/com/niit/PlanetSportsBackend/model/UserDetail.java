@@ -1,5 +1,6 @@
 package com.niit.PlanetSportsBackend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,6 @@ import javax.persistence.Table;
 public class UserDetail 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	String username;
 	
 	String password,custname,role,email,address,mobile;

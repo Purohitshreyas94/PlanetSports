@@ -21,7 +21,7 @@
  <ul class="nav navbar-nav">
     <li class="active"><a href="index.jsp"><span class="glyphicon glyphicon-home"></span>Home</a></li>
 	 <li><a href="Category.jsp"><span class="glyphicon glyphicon-login"></span>Category</a></li>
-	  <li><a href="aboutus.jsp"><span class="glyphicon glyphicon-user"></span>About Us</a></li>
+	  <li><a href="aboutus"><span class="glyphicon glyphicon-user"></span>About Us</a></li>
 	  <li><a href="contactus.jsp"><span class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
