@@ -7,16 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController 
 {
     
-	@RequestMapping("/")
+  /*	@RequestMapping("/")
 	public String showIndex()
    {
-	   return "index";   
-   }
+	   
+		System.out.println("Index page displaying....");
+		return "index";   
+   }*/
 	
 	@RequestMapping("/aboutus")
 	public String showAboutUs()
    {
-	   return "aboutus";   
+	   System.out.println("About us page displaying..");
+		return "aboutus";   
    }
  
 }

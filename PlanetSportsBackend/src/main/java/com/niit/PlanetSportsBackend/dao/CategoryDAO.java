@@ -45,7 +45,7 @@ public class CategoryDAO
 		sessionFactory.getCurrentSession().delete(category);
 	}
 	
-  /*  
+    
 	public List<Category> getCategoryDetails()
 	{
 		Session session=sessionFactory.openSession();
@@ -53,7 +53,7 @@ public class CategoryDAO
 		List<Category> list=query.list();
 		session.close();
 		return list;
-	}*/
+	}
 	
 }
 

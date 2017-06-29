@@ -21,12 +21,12 @@ public class CategoryTestCase
 		CategoryDAO categoryDAO=(CategoryDAO)context.getBean("categoryDAO");
 		
 		//Inserting Test Case
-		Category category=new Category();
-		category.setCatname("BasketBall");
+		/* Category category=new Category();
+		category.setCatname("Swimming");
 		category.setCatdesc("This Category contains all accessories of BaskeBall..");
 		
 		categoryDAO.insertUpdateCategory(category);
-		System.out.println("Category Inserted");
+		System.out.println("Category Inserted");*/
 		
 		//Retrieval TestCase
 		
@@ -49,10 +49,11 @@ public class CategoryTestCase
 				}*/
 		      
 		//Update the Category
-				/*Category category=categoryDAO.getCategory(3);
-				category.setCatname("Dell with 1TB HardDisc ");
+				Category category=categoryDAO.getCategory(6);
+				category.setCatname("Hockey ");
+				category.setCatdesc("This Category includes all the accessories of Hockey");
 				categoryDAO.insertUpdateCategory(category);
-				System.out.println("The Category Updated");*/
+				System.out.println("The Category Updated");
 				
 		
 	}
