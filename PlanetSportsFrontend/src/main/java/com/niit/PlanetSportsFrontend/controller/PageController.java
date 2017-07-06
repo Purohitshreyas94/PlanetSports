@@ -23,11 +23,10 @@ public class PageController
 		return "aboutus";   
    }
  
-  /*	@RequestMapping(value= {"/","/home","/index"})
+  	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView index()
 	{
 		ModelAndView mv=new ModelAndView("index");
-		mv.addObject("greeting","Welcome to Spring Web MVC..");
 		return mv;
-	}*/
+	}
 }

@@ -22,12 +22,12 @@ public class ProductTestCase
 		
 		//Inserting Test Case
 		Product product=new Product();
-		product.setProdname("Cricket Bat");
-		product.setCatid(1);
-		product.setSuppid(100);
-		product.setQuantity(4);
-		product.setPrice(3000);
-		product.setProddesc("This Product contains all types of Bats..");
+		product.setProdname("Nike");
+		product.setCatid(3);
+		product.setSuppid(1);
+		product.setQuantity(5);
+		product.setPrice(1000);
+		product.setProddesc("Color is Blue..");
 		
 		productDAO.insertUpdateProduct(product);
 		System.out.println("Product Inserted");
