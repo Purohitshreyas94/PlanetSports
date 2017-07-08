@@ -8,13 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class PageController 
 {
     
-  /*	@RequestMapping("/")
-	public String showIndex()
-   {
-	   
-		System.out.println("Index page displaying....");
-		return "index";   
-   }*/
 	
 	@RequestMapping("/aboutus")
 	public String showAboutUs()
@@ -29,4 +22,19 @@ public class PageController
 		ModelAndView mv=new ModelAndView("index");
 		return mv;
 	}
+  	
+  	@RequestMapping("/account")
+	public String showAccount()
+   {
+	   System.out.println("Account page displaying..");
+		return "account";   
+   }
+  	
+  	@RequestMapping("/contactus")
+	public String showContactUs()
+   {
+	   System.out.println("ContactUs page displaying..");
+		return "contactus";   
+   }
+  	
 }

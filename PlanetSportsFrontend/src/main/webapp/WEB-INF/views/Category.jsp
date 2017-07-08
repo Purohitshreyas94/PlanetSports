@@ -5,7 +5,7 @@
 
 <!-- Category Form Started -->
 <c:if test="${flag}">
-	<form action="UpdateCategory" method="post">
+	<form action="/PlanetSportsFrontend/UpdateCategory" method="post">
 </c:if>
 <c:if test="${!flag}">
 <form action="AddCategory" method="post">
@@ -44,6 +44,7 @@
 </form>
 <!-- Category Form Completed -->
 
+
 <!-- Displaying the Category data using Table -->
 <table cellspacing="2" align="center" border="1">
 
@@ -66,6 +67,7 @@
 	</c:forEach>
 </table>
 <!-- Completed Displaying Table -->
+
 
 </body>
 </html>
