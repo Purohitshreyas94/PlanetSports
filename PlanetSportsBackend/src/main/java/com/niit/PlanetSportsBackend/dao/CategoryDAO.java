@@ -55,5 +55,13 @@ public class CategoryDAO
 		return list;
 	}
 	
+	public List<Category> list()
+	{
+		return null;
+		
+	}
+	
+	
+	
 }
 

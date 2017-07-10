@@ -9,6 +9,8 @@ import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Product 
@@ -17,8 +19,14 @@ public class Product
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int prodid;
   
-  String prodname,proddesc;
-  int catid,suppid,quantity,price;
+  String prodname;
+  @JsonIgnore
+  String proddesc;
+  int quantity,price;
+  @JsonIgnore
+  int catid;
+  @JsonIgnore
+  int suppid;
   
   @Transient
   MultipartFile file;

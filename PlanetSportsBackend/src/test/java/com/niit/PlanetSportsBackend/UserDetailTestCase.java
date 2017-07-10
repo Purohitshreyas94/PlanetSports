@@ -23,14 +23,14 @@ public class UserDetailTestCase
 		
 		//Inserting Test Case
 	  	UserDetail userdetail=new UserDetail();
-		 userdetail.setUsername("assd");
-		 userdetail.setAddress("India");
-	    userdetail.setCustname("Shreyas123");
-	    userdetail.setEmail("xyz@gmail.com");
+		 userdetail.setUsername("Shreyas Purohit");
+		 userdetail.setAddress("1121/E,Vasant Villa, Sykes Extension, Kolhapur");
+	    userdetail.setCustname("sniper_1994");
+	    userdetail.setEmail("purohitshreyas94@gmail.com");
 	    userdetail.setEnabled(true);
-	    userdetail.setMobile("12456789");
+	    userdetail.setMobile("7507854284");
 	    userdetail.setPassword("shreyas@123");
-	    userdetail.setRole(null);
+	    userdetail.setRole("ADMIN");
 	   
 		userdetailDAO.insertUpdateUserDetail(userdetail);
 		System.out.println("User Details Inserted..");

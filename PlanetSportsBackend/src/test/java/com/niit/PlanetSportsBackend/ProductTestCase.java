@@ -21,7 +21,7 @@ public class ProductTestCase
 		ProductDAO productDAO=(ProductDAO)context.getBean("productDAO");
 		
 		//Inserting Test Case
-		Product product=new Product();
+	/*	Product product=new Product();
 		product.setProdname("Nike");
 		product.setCatid(3);
 		product.setSuppid(1);
@@ -31,7 +31,7 @@ public class ProductTestCase
 		
 		productDAO.insertUpdateProduct(product);
 		System.out.println("Product Inserted");
-		
+		*/
 		//Retrieval TestCase
 		    /*
 				Product product=productDAO.getProduct(2);
@@ -54,7 +54,16 @@ public class ProductTestCase
 				{
 					System.out.println(product.getProdid()+":"+product.getProdname()+":"+product.getProddesc()+":"+product.getCatid()+":"+product.getPrice()+":"+product.getSuppid()+":"+product.getQuantity());
 				}
+		  
 		      */
+		List<Product> list=productDAO.getProductByCategory(2);
+		
+		for(Product product:list)
+		{
+			System.out.println(product.getProdid()+":"+product.getProdname()+":"+product.getProddesc()+":"+product.getCatid()+":"+product.getPrice()+":"+product.getSuppid()+":"+product.getQuantity());
+		}
+  
+		
 		//Update the Category
 			/*	
 		        Product product=productDAO.getProduct(3);

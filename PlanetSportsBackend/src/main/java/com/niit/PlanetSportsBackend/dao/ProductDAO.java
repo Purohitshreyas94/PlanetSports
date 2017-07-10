@@ -48,6 +48,8 @@ public class ProductDAO
 	}
 	
     
+    
+    
 	public List<Product> getProductDetails()
 	{
 		Session session=sessionFactory.openSession();
@@ -56,5 +58,34 @@ public class ProductDAO
 		session.close();
 		return list;
 	}
-
+  
+	public List<Product> getProductByCategory(int catid)
+	{
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from Product WHERE catid = :catid" , Product.class)
+				.setParameter("catid", catid);
+		List<Product> list=query.list();
+		session.close();
+		return list;
+	}
+	
+	/*public List<Product> getProductByCategory(int catid)
+	{
+        String selectProductsByCategory = "from Product WHERE catid = :catid"; 
+        return sessionFactory.openSession()
+        		.createQuery(selectProductsByCategory, Product.class)
+        		.setParameter("catid", catid)
+        		.list();
+    }*/
+	
+	public List<Product> getLatestProduct(int count)
+    {
+    	Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from Product ORDER By prodid",Product.class)
+				.setFirstResult(0).setMaxResults(count);
+		List<Product> list=query.list();
+		session.close();
+		return list;
+    }
+	
 }
