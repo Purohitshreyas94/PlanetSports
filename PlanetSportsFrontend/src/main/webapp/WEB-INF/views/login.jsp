@@ -1,6 +1,4 @@
 
-
-
 <!-- Container (The Band Section) -->
 <div id="band" class="container text-center mt-50">
   <h5 class="text-center">LOGIN</h5>
@@ -28,7 +26,7 @@
 				<div class="col-md-3 ">
 				</div>
 				<div class="input-field col-md-6  text-center">
-					<input type="submit" class="btn waves-effect waves-light col s12" style="color:#fff"value="LOG IN">
+					<input type="submit" class="btn1" value="LOG IN">
 				
 				</div>
 				<div class="col-md-3 ">

@@ -10,6 +10,7 @@ import com.niit.PlanetSportsBackend.dao.CategoryDAO;
 import com.niit.PlanetSportsBackend.dao.ProductDAO;
 import com.niit.PlanetSportsBackend.model.Category;
 import com.niit.PlanetSportsBackend.model.Product;
+import com.niit.PlanetSportsFrontend.exception.ProductNotFoundException;
 
 @Controller
 public class PageController 
@@ -43,13 +44,13 @@ public class PageController
    }
   	
   	@RequestMapping(value= "/signup")
-	public ModelAndView showSignup()
+	public  ModelAndView showSignup()
    {
   		ModelAndView mv=new ModelAndView("index");
-	   System.out.println("Signup page displaying..");
-	   mv.addObject("title","Sign Up");
-	   mv.addObject("userClickSignup",true);
-		return mv;   
+ 	   System.out.println("Signup page displaying..");
+ 	   mv.addObject("title","Signup");
+ 	   mv.addObject("userClickSignup",true);
+ 		return mv;   
    }
   	
   	@RequestMapping(value= "/login")
@@ -57,8 +58,8 @@ public class PageController
    {
   		ModelAndView mv=new ModelAndView("index");
 	   System.out.println("Login page displaying..");
-	   mv.addObject("title","Login0");
-	   mv.addObject("userClickLogin",true);
+	   mv.addObject("title","Login");
+	  mv.addObject("userClickLogin",true);
 		return mv;   
    }
   	
@@ -109,18 +110,17 @@ public class PageController
   	
   	//Showing Single Product
   	@RequestMapping(value = "/show/{prodid}/product")
-  	public ModelAndView showSingleProduct(@PathVariable int prodid )
+  	public ModelAndView showSingleProduct(@PathVariable int prodid)throws ProductNotFoundException
   	{
   		ModelAndView mv=new ModelAndView("index");
 		Product product=productDAO.getProduct(prodid);
+		
+		if(product == null)throw new  ProductNotFoundException();
 		
 		mv.addObject("title", product.getProdname());
 		mv.addObject("prodcut",product);
 		
 		mv.addObject("userClickShowProduct", true);
-		
-		
-		
   		
   		return mv;
   		

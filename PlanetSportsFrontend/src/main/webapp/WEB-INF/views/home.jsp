@@ -1,4 +1,4 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:auto;">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -46,63 +46,29 @@
 
 <!-- Container (The Band Section) -->
 <div id="band" class="container text-center">
-  <h3>PLANET SPORTS</h3>
+  <h3 class="for-h3-red">PLANET SPORTS</h3>
   <p><em>Go get your Game on!</em></p>
   
 					
 					 <p>At Planet Sports, we place innovation at the heart of our activities: from research to retail, including design, production and logistics. Our twenty Passion Brand teams channel all their energy in to developing technical, good-looking and simple products, always at the lowest possible prices. These products are aimed at all sports enthusiasts, from beginners to experts, and are sold exclusively at Planet Sports.<br> <a href="${contextRoot}/about">Read More</a></p>
   <br>
-  <!--<div class="row">
-    <div class="col-sm-4">
-      <p class="text-center"><strong>Name</strong></p><br>
-      <a href="#demo" data-toggle="collapse">
-        <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
-      </a>
-      <div id="demo" class="collapse">
-        <p>Guitarist and Lead Vocalist</p>
-        <p>Loves long walks on the beach</p>
-        <p>Member since 1988</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <p class="text-center"><strong>Name</strong></p><br>
-      <a href="#demo2" data-toggle="collapse">
-        <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
-      </a>
-      <div id="demo2" class="collapse">
-        <p>Drummer</p>
-        <p>Loves drummin'</p>
-        <p>Member since 1988</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <p class="text-center"><strong>Name</strong></p><br>
-      <a href="#demo3" data-toggle="collapse">
-        <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
-      </a>
-      <div id="demo3" class="collapse">
-        <p>Bass player</p>
-        <p>Loves math</p>
-        <p>Member since 2005</p>
-      </div>
-    </div>
-  </div>-->
+ 
   
 </div>
 
 <!-- Container (TOUR Section) -->
 <div id="tour" class="bg-1">
   <div class="container">
-    <h3 class="text-center">SPORT CATEGORIES </h3>
+    <h3 class="text-center for-h3 mb-30">SPORT CATEGORIES </h3>
     
     
-    <div class="row text-center">
+    <div class="row text-center ">
       <div class="col-sm-3">
         <div class="thumbnail">
           <img src="${images}/running-small.png" class="img-responsive"alt="Paris" >
-          <p><strong>RUNNING</strong></p>
+          <p><strong>Running</strong></p>
           
-          <a class="btn" href="running.jsp">View Products</a>
+          <a class="btn1" href="running.jsp">View Products</a>
         </div>
       </div>
       <div class="col-sm-3">
@@ -110,7 +76,7 @@
           <img src="${images}/football-small.png" class="img-responsive"alt="Paris" >
           <p><strong>Football</strong></p>
           
-          <a class="btn" href="football.jsp">View Products</a>
+          <a class="btn1" href="football.jsp">View Products</a>
         </div>
       </div>
 	   <div class="col-sm-3">
@@ -118,7 +84,7 @@
           <img src="${images}/women-playing-tennis.jpg" class="img-responsive"alt="Paris" >
           <p><strong>Tennis</strong></p>
           
-          <a class="btn" href="tennis.jsp">View Products</a>
+          <a class="btn1" href="tennis.jsp">View Products</a>
         </div>
       </div>
       <div class="col-sm-3">
@@ -126,7 +92,7 @@
           <img src="${images}/cricket-bat-small.png" class="img-responsive"alt="Paris" >
           <p><strong>Cricket</strong></p>
           
-          <a class="btn" href="football.jsp">View Products</a>
+          <a class="btn1" href="football.jsp">View Products</a>
         </div>
       </div>
 	

@@ -6,9 +6,6 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 
 <spring:url  var="css" value="/resources/css" />
-<spring:url  var="js" value="/resources/js" />
-<spring:url  var="images" value="/resources/images" />
-
 
 <html lang="en">
 <head>
@@ -20,8 +17,7 @@
      window.contextRoot = '${contextRoot}'
      
   </script>
-  
-  <meta charset="utf-8">
+  meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${css}/bootstrap.css">
   <link rel="stylesheet" href="${css}/dataTables.bootstrap.css">
@@ -43,67 +39,60 @@
   
   
     <script src="${js}/mysport.js"></script>
-  
-  
+    
 </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-
-<!--NavBar Code -->
-
-<%@include file="navbar.jsp" %>
-
-
-<!-- NavBar End -->
-
-<!-- Page Content -->
-<c:if test="${userClickHome ==true }">
-<%@include file="home.jsp" %>
-
-</c:if>
-
-<!-- Load Only When user Click About -->
-<c:if test="${userClickAbout == true}">
-   <%@include file="about.jsp" %>
-</c:if>
-
-<!-- Load Only When user Click Contact -->
-<c:if test="${userClickContact == true}">
-   <%@include file="contact.jsp" %>
-</c:if>
-
+  <nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="${contextRoot}/index">Back to Home..</a>
+    </div>
+   </div>
+  </nav>  
   
-<!-- Load Only When user Click Account --> 
-<c:if test="${userClickAccount == true}">
-   <%@include file="account.jsp" %>
-</c:if>
-
-
-<!-- Load Only When user Click Signup -->
-<c:if test="${userClickSignup == true}">
-   <%@include file="signup.jsp" %>
-</c:if>
-
-
-<!-- Load Only When user Click Login -->
-<c:if test="${userClickLogin == true}">
-   <%@include file="login.jsp" %>
-</c:if>
-
-
-<!-- Load Only When user Click Product or Category -->
-<c:if test="${userClickProducts == true or userClickCategoryProducts == true}">
-   <%@include file="listProduct.jsp" %>
-</c:if>
-
-<!-- Add Google Maps -->
-
-
-
-<!-- Footer Starts-->
-<footer >
-  <%@include file="footer.jsp" %>
-</footer>
-<!-- Footer Ends -->
-
-</body>
-</html>
+       
+       <div class ="content" >
+            <div class = "container">
+            
+              <div class = "row">
+                
+                <div class = "col-xs-12">
+                
+                      <div class = "jumbotron">
+                      
+                         <h1>${errorTitle}</h1>
+                          <hr/>
+                          
+                          <blockquote>
+                                 
+                                 ${errorDescription}
+                           
+                          </blockquote>
+                          
+                          
+                      </div>
+                
+                </div>
+              
+              
+              
+              </div>
+            
+            
+            </div>
+       
+            	<%@include file="footer.jsp" %>
+       
+       </div>
+  
+ 
+  
+  
+  
+ </body>
+ </html>

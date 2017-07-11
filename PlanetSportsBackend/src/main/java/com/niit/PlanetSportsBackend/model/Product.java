@@ -28,8 +28,15 @@ public class Product
   @JsonIgnore
   int suppid;
   
-  @Transient
+@Transient
   MultipartFile file;
+
+public MultipartFile getFile() {
+	return file;
+}
+public void setFile(MultipartFile file) {
+	this.file = file;
+}
 
   public int getProdid() 
   {

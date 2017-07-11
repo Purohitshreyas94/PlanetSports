@@ -1,8 +1,7 @@
-
 <!-- Container (The Band Section) -->
-<div id="band" class="container text-center mt-50">
+ <div id="band" class="container mt-50">
   <h5 class="text-center">SIGN UP</h5>
-  <p><em>Please Register Your Details..!</em></p>
+  <p class="text-center"><em>Please Register Your Details..!</em></p>
   <br>
 	
   <div class="row text-center z-depth-4">
@@ -33,8 +32,8 @@
 					<div class="input-field col col-md-12">
 					  <input id="mobile" name="mobile"type="text" class="validate"required >
 					  <label for="mobile"  class="active">Mobile No.</label>
-				<!-- 	</div>
-					<div class="input-field col s6 inline">
+				 	</div>
+					<!--<div class="input-field col s6 inline">
 					 
 						 
 							<select id="role" name="role" class="input-field inline mt-0" required>
@@ -58,7 +57,7 @@
 				<div class="col-md-3 ">
 				</div>
 				<div class="input-field col-md-6  text-center">
-					<input type="submit" class="btn waves-effect waves-light col s12" style="color:#fff"value="SIGN UP">
+					<input type="submit" class="btn1" value="SIGN UP">
 				
 				</div>
 				<div class="col-md-3 ">

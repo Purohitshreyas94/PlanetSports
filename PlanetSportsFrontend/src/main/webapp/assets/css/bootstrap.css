@@ -11,6 +11,7 @@ html {
 }
 body {
   margin: 0;
+  overflow-x:hidden;
 }
 article,
 aside,
@@ -1191,6 +1192,12 @@ h6,
   color: inherit;
   color:#007dad;
 }
+h5
+{
+color:#e20e25 !important;
+}
+
+
 h1 small,
 h2 small,
 h3 small,
@@ -5270,12 +5277,12 @@ a.thumbnail.active {
 }
 a.list-group-item,
 button.list-group-item {
-  color: #04617f;
+  color: #e20e25;
   font-weight:bold;
 }
 a.list-group-item .list-group-item-heading,
 button.list-group-item .list-group-item-heading {
-  color: #04617f;
+  color: #e20e25;
 }
 a.list-group-item:hover,
 button.list-group-item:hover,
@@ -5283,7 +5290,7 @@ a.list-group-item:focus,
 button.list-group-item:focus {
   color: #fff;
   text-decoration: none;
-  background-color: #007dad;
+  background-color: #e20e25;
 }
 button.list-group-item {
   width: 100%;
@@ -5311,8 +5318,8 @@ button.list-group-item {
 .list-group-item.active:focus {
   z-index: 2;
   color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #e20e25;
+  border-color: #e20e25;
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,
@@ -6593,6 +6600,7 @@ button.close {
   .visible-xs-block {
     display: block !important;
   }
+  .z-depth-4{box-shadow:none !important;}
 }
 @media (max-width: 767px) {
   .visible-xs-inline {
@@ -6760,5 +6768,11 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+@media only screen and (max-width: 479px) {
+
+ .sidebar {
+    float: none;
+}
 }
 /*# sourceMappingURL=bootstrap.css.map */

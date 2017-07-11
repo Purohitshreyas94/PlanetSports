@@ -87,4 +87,20 @@ $(function()
 	        
 		}
 	
+	        //Dismissing Alert after 3 seconds
+	
+	 var $alert = $('.alert');
+     
+     if($alert.length) 
+      {
+    	 setTimeOut(function()
+         {
+    		 $alert.fadeOut('slow');
+    	 } , 3000)
+    	 
+      }
+
+
+	
+	
 });

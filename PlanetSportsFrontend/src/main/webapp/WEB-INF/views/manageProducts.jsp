@@ -1,0 +1,119 @@
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+
+
+<div id="band" class="container text-center mt-50">
+       
+       <c:if test="${not empty message}">
+         <div class="col-xs-12">
+                      
+              <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  
+                  ${message}
+              
+             </div>
+         </div>
+       </c:if>
+
+  <h5 class="text-center">Manage Products</h5>
+  
+  <br>
+	
+  <div class="row text-center z-depth-4">
+	    
+		<div class="col-md-12 pt-30 pb-20">
+			<form:form method="post" class="col s12" action="${contextRoot}/manage/products" modelAttribute="product" enctype="multipart/form-data">
+				
+				<div class="row">
+					<div class="input-field col col-md-12">
+					  <form:input path="prodid" id="prodid" type="hidden" value=""/>
+					</div>
+					
+				</div>
+					
+				<div class="row">
+					<div class="input-field col col-md-12">
+					  <form:input path="prodname" id="prodname"type="text" class="validate"required />
+					  <label for="prodname"  class="active">Product Name</label>
+					</div>
+					
+					
+				<div class="row">
+				<div class="input-field col s12">
+				 <form:textarea path="proddesc" id="proddesc" placeholder="Product Description"class="materialize-textarea" required></form:textarea> 
+				</div>
+			  </div>	
+					
+					
+				</div>
+				<div class="row">
+					<div class="input-field col col-md-6">
+					  <form:input path="price" id="price" type="number" class="validate" pattern = "[1-9][0-9]{0,4}" required />
+					  <label for="price"  class="active">Price</label>
+					</div>
+					
+					<div class="input-field col col-md-6">
+					  <form:input id="quantity" path="quantity" type="number" class="validate" required />
+					  <label for="quantity" class="active">Quantity</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="input-field col s6 ">
+							
+						  
+						    <label for="catid" class="active">--Select Category--</label>
+							<form:select id="catid" path="catid" class="input-field inline mt-0" required 
+							        items="${category}"  
+							        itemlable="catname"  
+							        itemvalue="catid" />
+							
+						 
+					</div>
+				<!--  	<div class="input-field col s6">
+							
+						 
+							<select id="suppid" name="suppid" class="input-field inline mt-0" required>
+													    <option>--Supplier--</option>
+														<option>E-kart</option>
+														<option>Chandan Enterprises</option>
+														
+							 </select>
+							
+						 
+					</div>-->
+				</div>
+				<div class="row">
+					<div class="input-field col col-md-6 inline">
+					 <label for="file" class="active">Select an Image</label>
+					  <form:input path="file" id="file" type="file" class="validate" required />
+					  <form:errors path="file" ccsClass="help-block" element="em"></form:errors>
+					 
+					</div>
+				</div>
+				
+			  
+			  
+			  <div class="row text-center">
+				<div class="col-md-3 ">
+				</div>
+				<div class="input-field col-md-6  text-center">
+					<input type="submit" class="btn waves-effect waves-light col s12" style="color:#fff"value="Submit">
+					
+					<form:hidden path="suppid"/>
+				
+				</div>
+				<div class="col-md-3 ">
+				</div>
+				
+			  </div>
+			</form:form>
+			
+        </div>	
+       		
+  </div>
+</div>
+
+<!-- Container (TOUR Section) -->
+
+
