@@ -28,6 +28,14 @@ public class JsonDataController
     	return productDAO.getProductDetails();
     }
 	
+	@RequestMapping("/admin/all/products")
+	@ResponseBody
+    
+    public List<Product> getAllProductsForAdmin()
+    {
+    	return productDAO.getProductDetails();
+    }
+	
 	
 	@RequestMapping("/category/{catid}/products")
 	@ResponseBody
@@ -39,12 +47,5 @@ public class JsonDataController
 	
 	
 	
-	
-	@RequestMapping("/admin/all/products")
-	@ResponseBody
-	public List<Product> getAllProductsForAdmin()
-    {
-    	return productDAO.getProductDetails();
-    }
-	
+
 }

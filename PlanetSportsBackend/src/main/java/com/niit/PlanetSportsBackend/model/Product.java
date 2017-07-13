@@ -6,7 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,10 +21,15 @@ public class Product
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int prodid;
   
+  @NotBlank(message = "Please enter the Product Name!")
   String prodname;
   @JsonIgnore
+  @NotBlank(message = "Please enter the Description for the Product!..")
   String proddesc;
-  int quantity,price;
+  int quantity;
+  
+  @Min(value=1, message = "The Price cannot be less than 1!.")
+  int price;
   @JsonIgnore
   int catid;
   @JsonIgnore

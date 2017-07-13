@@ -1,107 +1,94 @@
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div id="band" class="container text-center mt-50">
-       
-       <c:if test="${not empty message}">
-         <div class="col-xs-12">
-                      
-              <div class="alert alert-success alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  
-                  ${message}
-              
-             </div>
-         </div>
-       </c:if>
-
+      
+   <c:if test="${not empty message}">
+     <div class="col-xs-12">
+           
+            <div class="alert alert-success alert-dismissible">
+                   <button type="button" class="close" data-dismiss="alert">&times;</button>  
+                   ${message}    
+           </div>
+      
+      </div>
+   </c:if>         
   <h5 class="text-center">Manage Products</h5>
-  
+  <p><em>Please Add the Product Details Here!</em></p>
   <br>
 	
   <div class="row text-center z-depth-4">
-	    
-		<div class="col-md-12 pt-30 pb-20">
-			<form:form method="post" class="col s12" action="${contextRoot}/manage/products" modelAttribute="product" enctype="multipart/form-data">
+	    <div class="col-md-12 pt-30 pb-20">
+			<form:form method="POST" class="col s112" action="${contextRoot}/manage/products" modelAttribute="product" enctype="multipart/form-data">
+				<div class="row">
+					<div class="input-field col col-md-12">
+					  <form:input path="prodid" id="prodid" type="hidden"/>
+					</div>
+					
+				</div>
+					
+				<div class="row">
+					<div class="input-field col col-md-12">
+					  <form:input path="prodname" id="prodname" type="text" class="validate"/>
+					  <label for="prodname"  class="active">Product Name</label>
+					  <form:errors path="prodname" cssClass="help-block" element="em"/>
+					</div>
+				</div>
 				
 				<div class="row">
-					<div class="input-field col col-md-12">
-					  <form:input path="prodid" id="prodid" type="hidden" value=""/>
-					</div>
-					
-				</div>
-					
-				<div class="row">
-					<div class="input-field col col-md-12">
-					  <form:input path="prodname" id="prodname"type="text" class="validate"required />
-					  <label for="prodname"  class="active">Product Name</label>
-					</div>
-					
-					
-				<div class="row">
-				<div class="input-field col s12">
-				 <form:textarea path="proddesc" id="proddesc" placeholder="Product Description"class="materialize-textarea" required></form:textarea> 
-				</div>
-			  </div>	
-					
-					
-				</div>
-				<div class="row">
 					<div class="input-field col col-md-6">
-					  <form:input path="price" id="price" type="number" class="validate" pattern = "[1-9][0-9]{0,4}" required />
+					  <form:input path="price" id="price" type="number" class="validate"/> 
 					  <label for="price"  class="active">Price</label>
+					   <form:errors path="price" cssClass="help-block" element="em"/>
 					</div>
-					
 					<div class="input-field col col-md-6">
-					  <form:input id="quantity" path="quantity" type="number" class="validate" required />
+					  <form:input id="quantity" path="quantity" type="number" class="validate"/>
 					  <label for="quantity" class="active">Quantity</label>
 					</div>
 				</div>
 				
+				
 				<div class="row">
 					<div class="input-field col s6 ">
 							
-						  
-						    <label for="catid" class="active">--Select Category--</label>
-							<form:select id="catid" path="catid" class="input-field inline mt-0" required 
-							        items="${category}"  
-							        itemlable="catname"  
-							        itemvalue="catid" />
-							
-						 
-					</div>
-				<!--  	<div class="input-field col s6">
-							
-						 
-							<select id="suppid" name="suppid" class="input-field inline mt-0" required>
-													    <option>--Supplier--</option>
-														<option>E-kart</option>
-														<option>Chandan Enterprises</option>
+						       <label for="catid" class="active">--Select Category:--</label>
+							<form:select id="catid" path="catid" class="input-field inline mt-0" 
+	                           
+							             items="${category}"
+							             itemLabel="catname"
+							             itemValue="catid"
 														
-							 </select>
-							
-						 
-					</div>-->
-				</div>
-				<div class="row">
-					<div class="input-field col col-md-6 inline">
-					 <label for="file" class="active">Select an Image</label>
-					  <form:input path="file" id="file" type="file" class="validate" required />
-					  <form:errors path="file" ccsClass="help-block" element="em"></form:errors>
-					 
+						        />
 					</div>
 				</div>
 				
+				
+			  <div class="row">
+				<div class="input-field col s12">
+				 <form:textarea path="proddesc" id="proddesc" placeholder="Product Description"  class="materialize-textarea"></form:textarea>
+				 <form:errors path="proddesc" cssClass="help-block" element="em"/>          
+				</div>
+			  </div>
 			  
+			  
+	        		  
+			  <div class="row">
+					<div class="input-field col col-md-6 inline">
+					<label for="file" class="active">Select an Image..</label>
+					  <form:input name="file" path="file" id="file" type="file" />
+					   <form:errors path="file" cssClass="help-block" element="em"/>
+					 
+					</div>
+				</div>
+			  
+			
 			  
 			  <div class="row text-center">
 				<div class="col-md-3 ">
 				</div>
 				<div class="input-field col-md-6  text-center">
-					<input type="submit" class="btn waves-effect waves-light col s12" style="color:#fff"value="Submit">
-					
-					<form:hidden path="suppid"/>
-				
+					<input type="submit" class="btn1" value="Submit">
+					<!-- Hidden Fields -->
+					 <form:hidden path="suppid"/>
 				</div>
 				<div class="col-md-3 ">
 				</div>
@@ -112,8 +99,72 @@
         </div>	
        		
   </div>
+  
+                    
+               <!-- Datatable for Admin -->
+               <div class = "row">
+              
+              <div class="col-xs-12">
+                      <h3>Available Products</h3>
+              </div>
+
+                <div class="col-xs-12">
+                      <div style ="overflow:auto">
+                              
+                              <!--  Table for Admin  -->  
+               	       <table id="adminproducttable" class="table table-striped table-bordered">
+                          
+                      <thead>
+			             
+			                  <tr>
+			                      <th>Product Id </th>
+			                       <th>&#160;</th>
+			                      <th>Product Name</th>
+			                     <th>Product Quantity</th>
+			                     <th>Product Price</th>
+			                      <th>Edit</th>
+			                       <th>Delete</th>
+			                  </tr>
+			             
+			           </thead>
+			             
+			             <tbody>
+			                    <tr>
+			                        <td></td>
+			                        <td></td>
+			                        <td></td>
+			                        <td></td>
+			                        <td></td>
+			                        <td></td>
+			                        <td></td>
+			             
+			                   </tr>
+			              
+			             </tbody>
+			               
+			              <tfoot>
+			             
+			                  <tr>
+			                      <th>Product Id </th>
+			                       <th>&#160;</th>
+			                      <th>Product Name</th>
+			                      <th>Product Quantity</th>
+			                      <th>Product Price</th>
+			                       <th>Edit</th>
+			                       <th>Delete</th>
+			                    
+			                  </tr>
+			                
+			              
+			             </tfoot>   
+			         
+                      </table>
+                      
+                    </div>
+                           
+              
+              </div>
+                          
+     </div>
+ 
 </div>
-
-<!-- Container (TOUR Section) -->
-
-

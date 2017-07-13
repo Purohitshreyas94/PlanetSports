@@ -43,7 +43,7 @@ public class PageController
 		return mv;   
    }
   	
-  	@RequestMapping(value= "/signup")
+  /*	@RequestMapping(value= "/signup")
 	public  ModelAndView showSignup()
    {
   		ModelAndView mv=new ModelAndView("index");
@@ -51,7 +51,7 @@ public class PageController
  	   mv.addObject("title","Signup");
  	   mv.addObject("userClickSignup",true);
  		return mv;   
-   }
+   }*/ 
   	
   	@RequestMapping(value= "/login")
 	public ModelAndView showLogin()
@@ -63,15 +63,7 @@ public class PageController
 		return mv;   
    }
   	
-  	@RequestMapping(value= "/contact")
-	public ModelAndView showContact()
-   {
-  		ModelAndView mv=new ModelAndView("index");
-	   System.out.println("ContactUs page displaying..");
-	   mv.addObject("title","Contact Us");
-	   mv.addObject("userClickContact",true);
-		return mv;   
-   }
+ 
   	
   	/*
           Methods to show all products and based on Category.
@@ -125,6 +117,7 @@ public class PageController
   		return mv;
   		
   	}
+  	
   	
 } 
 

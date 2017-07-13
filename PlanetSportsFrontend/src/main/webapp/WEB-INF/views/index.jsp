@@ -33,12 +33,12 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
-  
   <script src="${js}/jquery.min.js"></script>
    <script src="${js}/jquery.js"></script>
   <script src="${js}/bootstrap.min.js"></script>
    <script src="${js}/jquery.dataTables.js"></script>
    <script src="${js}/dataTables.bootstrap.js"></script>
+   <script src="${js}/bootbox.min.js"></script>
   <script src="${js}/materialize.min.js"></script>
   
   
@@ -56,7 +56,7 @@
 <!-- NavBar End -->
 
 <!-- Page Content -->
-<c:if test="${userClickHome ==true }">
+<c:if test="${userClickHome ==true}">
 <%@include file="home.jsp" %>
 
 </c:if>
@@ -66,10 +66,6 @@
    <%@include file="about.jsp" %>
 </c:if>
 
-<!-- Load Only When user Click Contact -->
-<c:if test="${userClickContact == true}">
-   <%@include file="contact.jsp" %>
-</c:if>
 
   
 <!-- Load Only When user Click Account --> 
@@ -94,6 +90,12 @@
 <c:if test="${userClickProducts == true or userClickCategoryProducts == true}">
    <%@include file="listProduct.jsp" %>
 </c:if>
+
+<!-- Load Only When user Click Manage Product -->
+<c:if test="${userClickManageProducts == true}">
+  <%@include file="manageProducts.jsp" %>
+</c:if>
+
 
 <!-- Add Google Maps -->
 

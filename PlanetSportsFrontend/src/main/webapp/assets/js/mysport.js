@@ -15,8 +15,8 @@ $(function()
 		$('#login').addClass('active');
 		break;
 	
-	case 'Contact Us':
-		$('#contact').addClass('active');
+	case 'Manage Products':
+		$('#manageProducts').addClass('active');
 		break;
 	
 	default:
@@ -93,13 +93,18 @@ $(function()
      
      if($alert.length) 
       {
-    	 setTimeOut(function()
-         {
+    	 setTimeOut(function(){
     		 $alert.fadeOut('slow');
     	 } , 3000)
     	 
       }
-
+     
+     
+     //--------------------------Data Tables For Admin----------------------//
+     
+       
+     
+     
 
 	
 	

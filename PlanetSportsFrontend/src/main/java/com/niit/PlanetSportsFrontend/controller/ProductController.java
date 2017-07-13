@@ -3,6 +3,7 @@ package com.niit.PlanetSportsFrontend.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,68 +23,83 @@ import com.niit.PlanetSportsFrontend.util.FileUploadUtility;
 import com.niit.PlanetSportsFrontend.validator.ProductValidator;
 
 @Controller
-@RequestMapping("/manageproduct")
+@RequestMapping("/manage")
+
 public class ProductController 
 {
-	@Autowired
+	
+	@Autowired 
 	CategoryDAO categoryDAO;
 	
 	@Autowired
 	ProductDAO productDAO;
 	
+    @RequestMapping(value="/products", method=RequestMethod.GET)
+    public ModelAndView showManageProducts(@RequestParam(name="operation",required=false)String operation)
+    {
+    	
+        ModelAndView mv=new ModelAndView("index");
+        mv.addObject("userClickManageProducts",true);
+        mv.addObject("title","Manage Products");
+        Product nProduct = new Product();
+        
+        
+        //set few of the fields
+        nProduct.setSuppid(0);
+        
+        mv.addObject("product", nProduct);
+        
+        if(operation!=null)
+        {
+        	if(operation.equals("product"))
+        	{
+        		mv.addObject("message","Product Submitted Successfully!...");
+        	}
+        }
+        
+         return mv;
+    
+    }
+    
+    
+    //handling product submission
+    @RequestMapping(value="/products", method=RequestMethod.POST)
+    public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model, 
+    		HttpServletRequest request)
+    {
+    	
+    	new ProductValidator().validate(mProduct,results);
+    	
+    	
+    	//check if there are any errors
+    	if(results.hasErrors())
+    	{
+    		
+            model.addAttribute("userClickManageProducts", true);
+            model.addAttribute("title", "Manage Products");
+    		model.addAttribute("message", "Validation failed for Product Submission");
+            return "index";
+    	}
+    	
+    	
+    	//create a new Product Record
+    	productDAO.insertUpdateProduct(mProduct);
+    	
+    	if(!mProduct.getFile().getOriginalFilename().equals(""))
+    	{
+    		FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getProdid());
+    	}
+    	
+    	
+    	return "redirect:/manage/products?operation=product"; 
+    }
+    
+    
+    // Returning Categories For All the Products
+    @ModelAttribute("category")
+    public List<Category> getCategory()
+    {
+		return categoryDAO.getCategoryDetails();
+    }
 	
-	@RequestMapping(value="/products", method=RequestMethod.GET)
-	public ModelAndView showManageProducts(@RequestParam(name="operation", required=false) String operation)
-	{
-		ModelAndView mv= new ModelAndView("index");
-		mv.addObject("userCLickManageProducts", true);
-		mv.addObject("title","Manage Products");
-		
-		Product nProduct = new Product();
-		nProduct.setSuppid(0);
-		
-		mv.addObject("product",nProduct);
-		
-		if(operation!=null)
-		{
-			if(operation.equals("product"))
-			{
-				mv.addObject("message", "Product Submitted Successfully!..");
-			}
-		}
-		
-		return mv;
-		
-	}
-	
-	//Product Insertion
-	@RequestMapping(value="/products", method=RequestMethod.POST)
-	public String handleProductSubmission(@ModelAttribute("product") Product mproduct, BindingResult results, Model model,HttpServletRequest request)
-	{  
-		
-		new ProductValidator().validate(mproduct,results);
-		
-		
-		 
-		//create a new Product Record
-		productDAO.insertUpdateProduct(mproduct);
-		
-		if(!mproduct.getFile().getOriginalFilename().equals(""))
-		{
-			FileUploadUtility.uploadFile(request,mproduct.getFile(),mproduct.getProdid());
-		}
-		return "redirect:/manage/products?operation=product";
-		
-	}
-	
-	
-	
-	
-	
-	//returning Category for all MAppings
-	@ModelAttribute("category")
-	public List<Category> getCategory()
-	{
-		return categoryDAO.list();
-	}
 }
