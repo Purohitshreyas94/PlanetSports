@@ -89,6 +89,7 @@
 					<input type="submit" class="btn1" value="Submit">
 					<!-- Hidden Fields -->
 					 <form:hidden path="suppid"/>
+					 <form:hidden path="code"/>
 				</div>
 				<div class="col-md-3 ">
 				</div>
@@ -112,50 +113,35 @@
                       <div style ="overflow:auto">
                               
                               <!--  Table for Admin  -->  
-               	       <table id="adminproducttable" class="table table-striped table-bordered">
+               	       <table id="adminProductsTable" class="table table-striped table-bordered">
                           
                       <thead>
 			             
 			                  <tr>
-			                      <th>Product Id </th>
-			                       <th>&#160;</th>
+			                      <th>Product ID</th>
+			                      <th>&#160;</th>
 			                      <th>Product Name</th>
 			                     <th>Product Quantity</th>
 			                     <th>Product Price</th>
-			                      <th>Edit</th>
-			                       <th>Delete</th>
+			                      <th></th>
+			                       
 			                  </tr>
 			             
 			           </thead>
 			             
-			             <tbody>
-			                    <tr>
-			                        <td></td>
-			                        <td></td>
-			                        <td></td>
-			                        <td></td>
-			                        <td></td>
-			                        <td></td>
-			                        <td></td>
-			             
-			                   </tr>
-			              
-			             </tbody>
-			               
+			                   
 			              <tfoot>
 			             
 			                  <tr>
-			                      <th>Product Id </th>
-			                       <th>&#160;</th>
+			                      <th>Product ID </th>
+			                      <th>&#160;</th>
 			                      <th>Product Name</th>
 			                      <th>Product Quantity</th>
 			                      <th>Product Price</th>
-			                       <th>Edit</th>
-			                       <th>Delete</th>
+			                       <th></th>
+			                       
 			                    
 			                  </tr>
-			                
-			              
 			             </tfoot>   
 			         
                       </table>

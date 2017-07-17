@@ -85,14 +85,15 @@
             
             
             </div>
-       
-            	<%@include file="footer.jsp" %>
+                
+            	
        
        </div>
-  
- 
-  
-  
+              <footer >
+  <%@include file="footer.jsp" %>
+</footer>
+<!-- Footer Ends -->
+              
   
  </body>
  </html>

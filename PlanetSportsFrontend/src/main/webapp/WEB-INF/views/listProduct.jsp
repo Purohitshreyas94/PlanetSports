@@ -55,6 +55,7 @@
 			             <thead>
 			             
 			                  <tr>
+			                      <th></th>
 			                      <th>Product Name</th>
 			                     <th>Product Quantity</th>
 			                     <th>Product Price</th>
@@ -68,6 +69,7 @@
 			              <tfoot>
 			             
 			                  <tr>
+			                       <th></th>
 			                      <th>Product Name</th>
 			                     <th>Product Quantity</th>
 			                     <th>Product Price</th>

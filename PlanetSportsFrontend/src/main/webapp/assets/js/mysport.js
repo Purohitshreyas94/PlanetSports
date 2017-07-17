@@ -53,11 +53,26 @@ $(function()
 	        		   },
 	        		   columns: [
 	        			          {
+	        			        	data: 'code', 
+	        			        	mRender: function(data,type,row){
+	        			        		
+	        			        		return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" class="dataTableImg"/>';
+	        			        	}
+	        			          },
+	        			          {
 	        			        	  data: 'prodname'
 	        			          },
 	        			          
 	        			          {
-	        			        	  data: 'quantity'
+	        			        	  data: 'quantity',
+	        			        	  mRender: function(data,type,row)
+	        			        	  {
+	        			        		  if(data<1)
+	        			        			  {
+	        			        			      return '<span style="color:red">Out Of Stock!</span>';
+	        			        			  }
+	        			        	      return data;
+	        			        	  }
 	        			          },
 	        			   
 	        			          {
@@ -73,8 +88,17 @@ $(function()
 	        			        	   mRender: function(data, type, row){
 	        			        	   var str = '';
 	        			        	   str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-primary"><i class="material-icons">visibility</i></a> &#160;';
-	        			        	   str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-success"><i class="material-icons">shopping_cart</i></a>';
 	        			        	   
+	        			        	   if(row.quantity < 1)
+	        			        	   {
+	        			        		      str += '<a href="javascript:void(0)" class="btn btn-success disabled"><i class="material-icons">shopping_cart</i></a>';
+	        			        	   }
+	        			        	   else
+	        			        	  {
+	        			        		   
+	        			        	   str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-success"><i class="material-icons">shopping_cart</i></a>';
+	        			        	  
+	        			        	  }
 	        			        	   return str;
 	        			        	   
 	        			        	   }
@@ -100,12 +124,134 @@ $(function()
       }
      
      
-     //--------------------------Data Tables For Admin----------------------//
+     //--------------------------Data Tables For Admin Product----------------------
      
-       
+     var $adminProductsTable = $('#adminProductsTable');
+ 	
+ 	if($adminProductsTable.length)
+ 		{
+ 		       var jsonUrl = window.contextRoot + '/json/data/admin/all/products';
+ 		       
+ 		          
+ 	           $adminProductsTable.DataTable( {
+ 	        	   
+ 	        	   lengthMenu: [[10,30,50,-1], ['10 Records', '30 Records', '50 Records', 'ALL']],
+ 	        	   pageLength: 30,
+ 	        	   ajax:
+ 	        		   {
+ 	        		     url:jsonUrl,
+ 	        		     dataSrc:''
+ 	        		   },
+ 	        		   columns: [
+ 	        			             {
+     			        	              data: 'prodid'
+     			                     },
+ 	        			            {
+ 	        			        	  data : 'code', 
+ 	        			        	  bSortable : false,
+ 	        			        	  mRender : function(data,type,row){
+ 	        			        		  return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" class="adminDataTableImg"/>';
+ 	        			        	 }	  
+ 	        			           },
+ 	        			          {
+ 	        			        	  data: 'prodname'
+ 	        			          },
+ 	        			          {
+ 	        			        	  data: 'quantity',
+ 	        			        	  mRender : function(data,type,row)
+ 	        			        	  {
+ 	        			        		  if(data<1){
+ 	        			        			  return '<span style="color:red">Out of Stock!</span>';
+ 	        			        		  }
+ 	        			        		  return data;
+ 	        			        	  }
+ 	        			          },
+ 	        			          {
+ 	        			        	  data: 'price',
+ 	        			              mRender: function(data, type, row){
+ 	        			            	return '&#8377;' + data  
+ 	        			                }      
+ 	        			          }, 
+ 	        			          {
+ 	        			        	   data : 'prodid',
+ 	        			        	   bSortable: false,
+ 	        			        	   mRender: function(data, type, row){
+ 	        			        	   var str = '';
+ 	        			        	   str += '<a href="'+window.contextRoot+'/manage/'+data+'/delete/product" class="btn btn-primary btn-xs ">';
+ 	        			        	   str +='<i class="material-icons">delete</i></a>&#160;';
+ 	        			        	   
+ 	  
+ 	        			        	  str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-primary btn-xs">';
+ 	        			        	  str += '<i class="material-icons">mode_edit</i></a>';
+ 	        			        	   
+ 	        			        	             
+ 	        			        	   return str;
+ 	        			        	   
+ 	        			        	   } 	        			        
+ 	        			          }
+ 	        			          
+ 	        		            ]
+ 	        		   
+ 	           });
+ 	        
+ 		}
      
      
+     
+     //--------------------------Data table ends here----------------------
 
 	
-	
+ 	
+ 	
+ 	//------------------------------Data table for Admin for Category----------
+ 	
+var $adminCategroyTable = $('#adminCategroyTable');
+ 	
+ 	if($adminCategroyTable.length)
+ 		{
+ 		       var jsonUrl = window.contextRoot + '/json/data/admin/all/category';
+ 		       
+ 		          
+ 	           $adminCategroyTable.DataTable( {
+ 	        	   
+ 	        	   lengthMenu: [[5,10,20,-1], ['5 Records', '10 Records', '20 Records', 'ALL']],
+ 	        	   pageLength: 10,
+ 	        	   ajax:
+ 	        		   {
+ 	        		     url:jsonUrl,
+ 	        		     dataSrc:''
+ 	        		   },
+ 	        		   columns: [
+ 	        			             {
+     			        	              data: 'catid'
+     			                     },
+ 	        			           
+ 	        			          {
+ 	        			        	  data: 'catname'
+ 	        			          },
+ 	        			            
+ 	        			          {
+ 	        			        	   data : 'catid',
+ 	        			        	   bSortable: false,
+ 	        			        	   mRender: function(data, type, row){
+ 	        			        	   var str = '';
+ 	        			        	 
+ 	        			        	  str += '<a href="'+window.contextRoot+'/manage/'+data+'/category" class="btn btn-primary bt-xs">';
+ 	        			        	  str += '<i class="material-icons">mode_edit</i></a>';
+ 	        			        	   
+ 	        			        	 str += '<a href="'+window.contextRoot+'/manage/'+data+'/delete/category" class="btn btn-primary btn-xs">';
+	        			        	   str +='<i class="material-icons">delete</i></a>&#160;';
+ 	        			        	             
+ 	        			        	   return str;
+ 	        			        	   
+ 	        			        	   } 	        			        
+ 	        			          }
+ 	        			          
+ 	        		            ]
+ 	        		   
+ 	           });
+ 	        
+ 		}
+ 	
+	//------------------------------------Data table for Category ends here--------------
 });

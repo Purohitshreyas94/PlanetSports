@@ -45,6 +45,7 @@ public class ProductDAO
 	public void deleteProduct(Product product)
 	{
 		sessionFactory.getCurrentSession().delete(product);
+		
 	}
 	
     

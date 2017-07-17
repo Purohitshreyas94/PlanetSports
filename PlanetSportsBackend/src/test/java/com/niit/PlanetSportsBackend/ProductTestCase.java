@@ -21,17 +21,18 @@ public class ProductTestCase
 		ProductDAO productDAO=(ProductDAO)context.getBean("productDAO");
 		
 		//Inserting Test Case
-	/*	Product product=new Product();
-		product.setProdname("Nike");
-		product.setCatid(3);
-		product.setSuppid(1);
+		Product product=new Product();
+		product.setProdname("Spalding NBA Rebound BasketBall..");
+		product.setCatid(2);
+		product.setSuppid(0);
 		product.setQuantity(5);
-		product.setPrice(1000);
-		product.setProddesc("Color is Blue..");
+		product.setPrice(800);
+		product.setProddesc("This product comes with a highly durable rubber covering..");
 		
 		productDAO.insertUpdateProduct(product);
 		System.out.println("Product Inserted");
-		*/
+		
+		
 		//Retrieval TestCase
 		    /*
 				Product product=productDAO.getProduct(2);
@@ -56,13 +57,13 @@ public class ProductTestCase
 				}
 		  
 		      */
-		List<Product> list=productDAO.getProductByCategory(2);
+	/*	List<Product> list=productDAO.getProductByCategory(2);
 		
 		for(Product product:list)
 		{
 			System.out.println(product.getProdid()+":"+product.getProdname()+":"+product.getProddesc()+":"+product.getCatid()+":"+product.getPrice()+":"+product.getSuppid()+":"+product.getQuantity());
 		}
-  
+  */
 		
 		//Update the Category
 			/*	

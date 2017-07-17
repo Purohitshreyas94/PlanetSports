@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,6 @@ import com.niit.PlanetSportsFrontend.validator.ProductValidator;
 
 @Controller
 @RequestMapping("/manage")
-
 public class ProductController 
 {
 	
@@ -62,14 +62,68 @@ public class ProductController
     }
     
     
+    //For the Updating the Product
+    @RequestMapping(value="/{prodid}/product",method=RequestMethod.GET)
+    public ModelAndView showEditProducts(@PathVariable int prodid)
+    {
+    	
+        ModelAndView mv=new ModelAndView("index");
+        mv.addObject("userClickManageProducts",true);
+        mv.addObject("title","Manage Products");
+        
+        
+        //fetch the product from Database
+        Product nProduct = productDAO.getProduct(prodid);
+       
+        //set the product fetch from database
+        mv.addObject("product", nProduct);
+        
+        return mv;
+    
+    }
+    
+
+    //For the Deleting the Product
+    @RequestMapping(value="/{prodid}/delete/product",method=RequestMethod.POST)
+    public String showDeleteProducts(@PathVariable int prodid,Model model)
+    {
+    	
+       /* ModelAndView mv=new ModelAndView("index");
+        mv.addObject("userClickManageProducts",true);
+        mv.addObject("title","Manage Products");
+        
+        
+        //fetch the product from Database
+        Product product = productDAO.getProduct(prodid);
+        productDAO.deleteProduct(product);*/
+    	System.out.println("---Product Deleted----");
+		Product product=productDAO.getProduct(prodid);
+		productDAO.deleteProduct(product);
+                                               
+		return "redirect:/manage/product";
+    
+    }
+    
+    
+    
     //handling product submission
     @RequestMapping(value="/products", method=RequestMethod.POST)
     public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model, 
     		HttpServletRequest request)
     {
     	
-    	new ProductValidator().validate(mProduct,results);
     	
+    	 //handle image validation for new Products
+    	if(mProduct.getProdid()==0) {
+    	new ProductValidator().validate(mProduct,results);
+    	}
+    	else
+    	{
+    		if(!mProduct.getFile().getOriginalFilename().equals(""))
+    		{
+    			new ProductValidator().validate(mProduct,results);
+    		}
+    	}
     	
     	//check if there are any errors
     	if(results.hasErrors())
@@ -83,11 +137,19 @@ public class ProductController
     	
     	
     	//create a new Product Record
+    	if(mProduct.getProdid()==0)
+    	{	
     	productDAO.insertUpdateProduct(mProduct);
+    	}
+    	else
+    	{ 
+    		//update the Product if id is not 0
+    		productDAO.insertUpdateProduct(mProduct);
+    	}
     	
     	if(!mProduct.getFile().getOriginalFilename().equals(""))
     	{
-    		FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getProdid());
+    		FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
     	}
     	
     	

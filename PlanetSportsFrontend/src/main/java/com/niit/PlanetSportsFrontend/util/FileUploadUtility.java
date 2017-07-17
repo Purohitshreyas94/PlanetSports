@@ -12,7 +12,7 @@ public class FileUploadUtility
        private static  final String ABS_PATH = "D:\\GIT HUB\\PlanetSports\\PlanetSportsFrontend\\src\\main\\webapp\\assets\\images\\";
        private static String REAL_PATH = "";
        
-	public static void uploadFile(HttpServletRequest request, MultipartFile file, int prodid) {
+	public static void uploadFile(HttpServletRequest request, MultipartFile file, String code) {
 		
 		 REAL_PATH = request.getSession().getServletContext().getRealPath("/assets/images/");
 		 
@@ -32,10 +32,10 @@ public class FileUploadUtility
 		 try
 		 {
 			 //Server Upload
-			 file.transferTo(new File(REAL_PATH + prodid + ".jpg"));
+			 file.transferTo(new File(REAL_PATH + code + ".jpg"));
 			 
 			 //Project Directory
-			 file.transferTo(new File(ABS_PATH + prodid + ".jpg"));
+			 file.transferTo(new File(ABS_PATH + code + ".jpg"));
 		 }
 		 
 		 catch(IOException e)

@@ -1,5 +1,7 @@
 package com.niit.PlanetSportsBackend.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +23,7 @@ public class Product
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int prodid;
   
+  String code;
   @NotBlank(message = "Please enter the Product Name!")
   String prodname;
   @JsonIgnore
@@ -37,6 +40,21 @@ public class Product
   
 @Transient
   MultipartFile file;
+
+
+//defualt Constructor..
+public Product()
+{
+   this.code= "PRO" + UUID.randomUUID().toString().substring(26).toUpperCase();	
+}
+
+
+public String getCode() {
+	return code;
+}
+public void setCode(String code) {
+	this.code = code;
+}
 
 public MultipartFile getFile() {
 	return file;

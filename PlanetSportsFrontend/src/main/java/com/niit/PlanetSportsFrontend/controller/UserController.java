@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,6 +22,7 @@ import com.niit.PlanetSportsBackend.model.Product;
 import com.niit.PlanetSportsBackend.model.UserDetail;
 
 @Controller
+@RequestMapping("/register")
 public class UserController {
 	
 	UserDetailDAO userdetailDAO;
@@ -61,14 +63,14 @@ public class UserController {
 	*/
 	
 
-	@RequestMapping(value = "/${contextRoot}/signup")
-	public String addUser(@RequestParam("username") String username, @RequestParam("custname") String custName,
+	@RequestMapping(value = "/user", method=RequestMethod.POST)
+	public ModelAndView addUser(@RequestParam("username") String username, @RequestParam("custname") String custName,
 			@RequestParam("email") String email, @RequestParam("password") String password,
 			@RequestParam("address") String address, @RequestParam("mobile") String mobile, Model m) {
 		System.out.println("---Add User Starting-----");
 
-		ModelAndView mv= new ModelAndView("index");
-		mv.addObject("useruserClickSignup", true);
+		ModelAndView mv= new ModelAndView("signup");
+		mv.addObject("userClickSignup", true);
 		mv.addObject("title","Registration");
 		
 		UserDetail userdetail = new UserDetail();
@@ -78,6 +80,7 @@ public class UserController {
 		userdetail.setMobile(mobile);
 		userdetail.setUsername(username);
 		userdetail.setPassword(password);
+		userdetail.setEnabled(true);
 		userdetail.setRole("User");
 
 		userdetailDAO.insertUpdateUserDetail(userdetail);
@@ -87,6 +90,6 @@ public class UserController {
 		m.addAttribute("UserDetail", list);
 
 		System.out.println("---User Added----");
-		return "signup";
+		return mv;
 	}
 }

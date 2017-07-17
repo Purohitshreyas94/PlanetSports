@@ -1,25 +1,38 @@
-<!--  
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+	
+	<http pattern="/resources/**" security="none"/>
+	
+	
 	<http>
-		<intercept-url pattern="/**" access="hasRole('USER')" />
-		<form-login />
+	     <!-- This is for only Admin Access --> 
+		<intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" />
+		<!-- This is for user who is registered -->
+		<intercept-url pattern="/cart/**" access="hasAuthority('USER')" />
+		<!-- This is for all the world -->
+		<intercept-url pattern="/**" access="permitAll" />
+		<form-login login-page="/login" />
+		<access-denied-handler error-page="/access-denied"/>
 		<logout />
+		<csrf disabled="true" />
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
-				<user name="Shreyas Purohit" password="shreyas@123" authorities="ROLE_USER, ROLE_ADMIN" />
-			</user-service>
+			<jdbc-user-service data-source-ref="dataSource"
+			 
+			  users-by-username-query="select username, password, enabled from userdetail where username = ?"
+			  authorities-by-username-query="select username, role from userdetail where username =?" />
+			
 		</authentication-provider>
 	</authentication-manager>
 
 
 </beans:beans>
--->

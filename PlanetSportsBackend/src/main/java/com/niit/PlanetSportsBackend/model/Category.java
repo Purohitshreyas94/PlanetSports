@@ -6,6 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Category 
@@ -14,7 +18,11 @@ public class Category
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int catid;
 	
-	String catname,catdesc;
+	@NotBlank(message= "Please enter the Category Name!")
+	String catname;
+	@JsonIgnore
+	@NotBlank(message= "Please enter the Category Description!")
+	String catdesc;
 
 	public int getCatid() {
 		return catid;

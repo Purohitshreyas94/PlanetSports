@@ -7,7 +7,7 @@
   <div class="row text-center z-depth-4">
 	    
 		<div class="col-md-12 pt-30 pb-20">
-			<form class="col s12" method=RequestMethod.POST action="signup">
+			<form class="col s12" method="POST" action="${contextRoot}/register">
 				<div class="row">
 					<div class="input-field col col-md-6">
 					  <input id="username" name="username"type="text" class="validate"required >

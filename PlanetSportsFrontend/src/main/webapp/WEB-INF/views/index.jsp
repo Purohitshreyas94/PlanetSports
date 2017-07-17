@@ -38,7 +38,6 @@
   <script src="${js}/bootstrap.min.js"></script>
    <script src="${js}/jquery.dataTables.js"></script>
    <script src="${js}/dataTables.bootstrap.js"></script>
-   <script src="${js}/bootbox.min.js"></script>
   <script src="${js}/materialize.min.js"></script>
   
   
@@ -80,12 +79,6 @@
 </c:if>
 
 
-<!-- Load Only When user Click Login -->
-<c:if test="${userClickLogin == true}">
-   <%@include file="login.jsp" %>
-</c:if>
-
-
 <!-- Load Only When user Click Product or Category -->
 <c:if test="${userClickProducts == true or userClickCategoryProducts == true}">
    <%@include file="listProduct.jsp" %>
@@ -94,6 +87,17 @@
 <!-- Load Only When user Click Manage Product -->
 <c:if test="${userClickManageProducts == true}">
   <%@include file="manageProducts.jsp" %>
+</c:if>
+
+<!-- Load Only When user Click Manage Product -->
+<c:if test="${userClickManageCategory == true}">
+  <%@include file="manageCategory.jsp" %>
+</c:if>
+
+
+<!-- Load Only When user Click Show Product -->
+<c:if test="${userClickShowProduct == true}">
+  <%@include file="singleProduct.jsp" %>
 </c:if>
 
 
