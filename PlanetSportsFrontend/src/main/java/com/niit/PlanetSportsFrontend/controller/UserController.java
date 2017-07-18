@@ -25,14 +25,74 @@ import com.niit.PlanetSportsBackend.model.UserDetail;
 @RequestMapping("/register")
 public class UserController {
 	
+	@Autowired
 	UserDetailDAO userdetailDAO;
-	@Autowired
-	CategoryDAO categoryDAO;
-
-	@Autowired
-	ProductDAO productDAO;
 	
- 
+	
+
+	
+	@RequestMapping(value = "/user",method=RequestMethod.GET)
+	 public ModelAndView showUser(@RequestParam(name="operation",required=false)String operation)
+	{
+		ModelAndView mv = new ModelAndView("index");
+		
+		mv.addObject("userClickSignup", true);
+		mv.addObject("title", "Registration");
+		UserDetail userdetail = new UserDetail();
+		//Set the few fields
+		//userdetail.setRole("User");
+		
+		
+		if(operation!=null)
+		{
+			if(operation.equals("userdetail"))
+			{
+				mv.addObject("message", "All detaila are submitted successfully!You can login now!");
+			}
+		}
+		
+		return mv;
+	}
+
+	@RequestMapping(value = "/user", method=RequestMethod.POST)
+	public String addUser(@RequestParam("username") String username, @RequestParam("custname") String custName,
+			@RequestParam("email") String email, @RequestParam("password") String password,
+			@RequestParam("mobile") String mobile,@RequestParam("address") String address,UserDetail muserdetail, Model m) {
+		System.out.println("---Add User Starting-----");
+		
+		muserdetail.setRole("User");
+		muserdetail.setEnabled(true);
+		muserdetail.setUsername(username);
+		muserdetail.setCustname(custName);
+		muserdetail.setAddress(address);
+		muserdetail.setEmail(email);
+		muserdetail.setMobile(mobile);
+		muserdetail.setPassword(password);
+		
+		
+				
+
+		userdetailDAO.insertUpdateUserDetail(muserdetail);
+	
+		 
+		List<UserDetail> list = userdetailDAO.getUserDetailDetails();
+		m.addAttribute("UserDetail", list);
+
+		System.out.println("---User Added----");
+		return "redirect:/register/user?operation=userdetail";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/*
 	@RequestMapping("/login_success")
@@ -63,33 +123,4 @@ public class UserController {
 	*/
 	
 
-	@RequestMapping(value = "/user", method=RequestMethod.POST)
-	public ModelAndView addUser(@RequestParam("username") String username, @RequestParam("custname") String custName,
-			@RequestParam("email") String email, @RequestParam("password") String password,
-			@RequestParam("address") String address, @RequestParam("mobile") String mobile, Model m) {
-		System.out.println("---Add User Starting-----");
-
-		ModelAndView mv= new ModelAndView("signup");
-		mv.addObject("userClickSignup", true);
-		mv.addObject("title","Registration");
-		
-		UserDetail userdetail = new UserDetail();
-		userdetail.setCustname(custName);
-		userdetail.setAddress(address);
-		userdetail.setEmail(email);
-		userdetail.setMobile(mobile);
-		userdetail.setUsername(username);
-		userdetail.setPassword(password);
-		userdetail.setEnabled(true);
-		userdetail.setRole("User");
-
-		userdetailDAO.insertUpdateUserDetail(userdetail);
-
-		 
-		List<UserDetail> list = userdetailDAO.getUserDetailDetails();
-		m.addAttribute("UserDetail", list);
-
-		System.out.println("---User Added----");
-		return mv;
-	}
 }

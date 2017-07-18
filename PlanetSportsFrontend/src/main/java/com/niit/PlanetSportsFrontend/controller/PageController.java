@@ -135,7 +135,7 @@ public class PageController
   		
   	}
   	
-  	
+  	/*
   	//Registering the new user
   	@RequestMapping(value = "/register")
 	public ModelAndView addUser(@RequestParam("username") String username, @RequestParam("custname") String custName,
@@ -166,7 +166,7 @@ public class PageController
 		System.out.println("---User Added----");
 		return mv;
 	}
-  	
+  	*/
   	
   	
   	

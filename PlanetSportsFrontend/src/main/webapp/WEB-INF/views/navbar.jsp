@@ -36,7 +36,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li id=signup><a href="${contextRoot}/register">Sign Up</a></li>
+            <li id=signup><a href="${contextRoot}/register/user">Sign Up</a></li>
             <li id=login><a href="${contextRoot}/login">Login</a></li>
           </ul>
         </li>

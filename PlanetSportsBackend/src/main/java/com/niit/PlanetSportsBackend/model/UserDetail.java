@@ -15,8 +15,10 @@ public class UserDetail
 	String password,custname,role,email,address,mobile;
 	boolean enabled;
 	
-	
-	
+	public  UserDetail()
+	{
+		
+	}
 	
 	public String getUsername() {
 		return username;

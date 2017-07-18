@@ -44,8 +44,6 @@ public class CategoryController
         Category nCategory = new Category();
         
         
-        //set few of the fields
-        
         mv.addObject("category", nCategory);
         
         if(operation!=null)
