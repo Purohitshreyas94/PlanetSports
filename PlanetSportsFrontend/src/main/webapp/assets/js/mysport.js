@@ -177,13 +177,12 @@ $(function()
  	        			        	   bSortable: false,
  	        			        	   mRender: function(data, type, row){
  	        			        	   var str = '';
- 	        			        	   str += '<a href="'+window.contextRoot+'/manage/'+data+'/delete/product" class="btn btn-primary btn-xs ">';
- 	        			        	   str +='<i class="material-icons">delete</i></a>&#160;';
- 	        			        	   
- 	  
+ 	        			        	  
  	        			        	  str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-primary btn-xs">';
- 	        			        	  str += '<i class="material-icons">mode_edit</i></a>';
- 	        			        	   
+ 	        			        	  str += '<i class="material-icons">mode_edit</i></a>&#160;';
+ 	        			        	  
+ 	        			        	 str += '<a href="'+window.contextRoot+'/manage/'+data+'/delete/product" class="btn btn-primary btn-xs ">';
+	        			        	 str +='<i class="material-icons">delete</i></a>';
  	        			        	             
  	        			        	   return str;
  	        			        	   

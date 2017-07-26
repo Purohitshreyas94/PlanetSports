@@ -16,7 +16,7 @@
         
         <security:authorize access="isAnonymous()">
        <li id="about"><a href="${contextRoot}/about">About</a></li> 
-         <li id="contact"><a href="${contextRoot}/contact">Contact Us</a></li>
+         <li id="contact"><a href="${contextRoot}/contact">Contact</a></li>
 		</security:authorize>
 		
 		<li class="dropdown">

@@ -135,39 +135,7 @@ public class PageController
   		
   	}
   	
-  	/*
-  	//Registering the new user
-  	@RequestMapping(value = "/register")
-	public ModelAndView addUser(@RequestParam("username") String username, @RequestParam("custname") String custName,
-			@RequestParam("email") String email, @RequestParam("password") String password,
-			@RequestParam("address") String address, @RequestParam("mobile") String mobile, Model m) {
-		System.out.println("---Add User Starting-----");
-
-		ModelAndView mv= new ModelAndView("index");
-		mv.addObject("userClickSignup", true);
-		mv.addObject("title","Registration");
-		
-		UserDetail userdetail = new UserDetail();
-		userdetail.setCustname(custName);
-		userdetail.setAddress(address);
-		userdetail.setEmail(email);
-		userdetail.setMobile(mobile);
-		userdetail.setUsername(username);
-		userdetail.setPassword(password);
-		userdetail.setEnabled(true);
-		userdetail.setRole("User");
-
-		userdetailDAO.insertUpdateUserDetail(userdetail);
-
-		 
-		List<UserDetail> list = userdetailDAO.getUserDetailDetails();
-		m.addAttribute("UserDetail", list);
-
-		System.out.println("---User Added----");
-		return mv;
-	}
-  	*/
-  	
+  	  	
   	
   	
   	//Access denied page

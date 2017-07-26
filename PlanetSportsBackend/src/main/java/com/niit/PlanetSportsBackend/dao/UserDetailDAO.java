@@ -10,8 +10,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-import com.niit.PlanetSportsBackend.model.Category;
 import com.niit.PlanetSportsBackend.model.UserDetail;
 
 @Repository("userdetailDAO")
@@ -31,6 +29,8 @@ public class UserDetailDAO
 		Session session=sessionFactory.getCurrentSession();
 		session.saveOrUpdate(userdetail);
 	}
+   
+    @Transactional
     public UserDetail getUserDetail(String username)
     {
 
@@ -40,62 +40,85 @@ public class UserDetailDAO
     	return userdetail;
     }
     
-   /* //Adding Address
-     public boolean addAddress(Address address)
-     {
-
- 		try{
-
- 			Session session=sessionFactory.getCurrentSession();
- 			session.saveOrUpdate(address);
- 			return true;
- 		  }
- 		
- 		catch(Exception e)
- 		{
- 			 e.printStackTrace();
-     	     return false;
- 		}
-    	 
-     }
-     
     
-     //Adding Cart
-    public boolean addCart(Cart cart)
+	@SuppressWarnings("deprecation")
+	@Transactional
+	public UserDetail validateUsername(String username)
     {
-		try{
-
-			Session session=sessionFactory.getCurrentSession();
-			session.saveOrUpdate(cart);
-			return true;
-		  }
-		
-		catch(Exception e)
-		{
-			 e.printStackTrace();
-    	     return false;
-		}
+		 Session session=sessionFactory.getCurrentSession();
+		 Query query=session.createQuery("from UserDetail where username=?");
+		  query.setString(0,username);
+		 UserDetail userdetail=(UserDetail) query.uniqueResult();   
+         return userdetail;	
+    }   
+	
+    
+    @SuppressWarnings("deprecation")
+    @Transactional
+	public UserDetail validateEmail(String email)
+    {
+		 Session session=sessionFactory.getCurrentSession();
+		 Query query=session.createQuery("from UserDetail where email=?");
+		 query.setString(0,email);
+		 UserDetail userdetail=(UserDetail) query.uniqueResult();   
+         return userdetail;	
     }
     
-    public List<Address> listShippingAddresses(UserDetail userdetail)
+    @SuppressWarnings("deprecation")
+    @Transactional
+	public UserDetail validateCustomername(String custname)
     {
-    	String selectQuery = "FROM Address WHERE userdetail = :userdetail AND shipping = :shipping";
-    	try{
-    		 return sessionFactory.getCurrentSession()
-    				 .createQuery(selectQuery, Address.class)
-    				 .setParameter("userdetail", userdetail)
-    				 .setParameter("shipping",true)
-    				 .list();
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    		return null;
-    	}
+		 Session session=sessionFactory.getCurrentSession();
+		 Query query=session.createQuery("from UserDetail where custname=?");
+		 query.setString(0,custname);
+		 UserDetail userdetail=(UserDetail) query.uniqueResult();   
+         return userdetail;	
     }
+              
+       
+       /* //Adding Address
+       public boolean addAddress(Address address)
+       {
+
+   		try{
+
+   			Session session=sessionFactory.getCurrentSession();
+   			session.saveOrUpdate(address);
+   			return true;
+   		  }
+   		
+   		catch(Exception e)
+   		{
+   			 e.printStackTrace();
+       	     return false;
+   		}
+      	 
+       }
+       
+      
+       //Adding Cart
+      public boolean addCart(Cart cart)
+      {
+  		try{
+
+  			Session session=sessionFactory.getCurrentSession();
+  			session.saveOrUpdate(cart);
+  			return true;
+  		  }
+  		
+  		catch(Exception e)
+  		{
+  			 e.printStackTrace();
+      	     return false;
+  		}
+      }
+      
+      
+      
+      */
+
+      
     
-    
-    */
 	public List<UserDetail> getUserDetailDetails()
 	{
 		Session session=sessionFactory.openSession();

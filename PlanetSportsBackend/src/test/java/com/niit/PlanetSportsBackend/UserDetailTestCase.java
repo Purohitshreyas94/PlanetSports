@@ -23,7 +23,7 @@ public class UserDetailTestCase
 		UserDetailDAO userdetailDAO=(UserDetailDAO)context.getBean("userdetailDAO");
 		
 		//Inserting Test Case
-	 /*	UserDetail userdetail=new UserDetail();
+	 	UserDetail userdetail=new UserDetail();
 		 userdetail.setUsername("Shreyas Purohit");
 		 userdetail.setAddress("1121/E,Vasant Villa, Sykes Extension, Kolhapur");
 	    userdetail.setCustname("sniper_1994");
@@ -35,8 +35,8 @@ public class UserDetailTestCase
 	   
 		userdetailDAO.insertUpdateUserDetail(userdetail);
 		System.out.println("User Details Inserted..");
-		*/
-		UserDetail userdetail=new UserDetail();
+		
+	/*	UserDetail userdetail=new UserDetail();
 		 userdetail.setUsername("Harish Mehata");
 		 userdetail.setAddress("Thane");
 	    userdetail.setCustname("Harish10");
@@ -46,7 +46,7 @@ public class UserDetailTestCase
 	    userdetail.setPassword("1234");
 	    userdetail.setRole("USER");
 	    
-	    
+	  */  
 		userdetailDAO.insertUpdateUserDetail(userdetail);
 		System.out.println("User Details Inserted..");
 		

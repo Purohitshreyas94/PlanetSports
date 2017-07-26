@@ -26,12 +26,14 @@
 					<div class="input-field col col-md-6">
 					  <input name="custname" id="custname" type="text" class="validate" required>
 					  <label for="custname" class="active">Customer Name</label>
+					  <p style="color:red">${duplicateCustomername}</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col col-md-6">
 					  <input id="email" name="email"type="email" class="validate"required >
 					  <label for="email"  class="active">Email</label>
+					  <p style="color:red">${duplicateEmail}</p>
 					</div>
 					<div class="input-field col col-md-6">
 					  <input id="password" name="password" type="password" class="validate" required>

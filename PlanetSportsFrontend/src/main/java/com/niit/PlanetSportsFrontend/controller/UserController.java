@@ -47,7 +47,7 @@ public class UserController {
 		{
 			if(operation.equals("userdetail"))
 			{
-				mv.addObject("message", "All detaila are submitted successfully!You can login now!");
+				mv.addObject("message", "All details are submitted successfully!You can login now!");
 			}
 		}
 		
@@ -55,7 +55,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user", method=RequestMethod.POST)
-	public String addUser(@RequestParam("username") String username, @RequestParam("custname") String custName,
+	public String addUser(@RequestParam("username") String username, @RequestParam("custname") String custname,
 			@RequestParam("email") String email, @RequestParam("password") String password,
 			@RequestParam("mobile") String mobile,@RequestParam("address") String address,UserDetail muserdetail, Model m) {
 		System.out.println("---Add User Starting-----");
@@ -63,18 +63,28 @@ public class UserController {
 		muserdetail.setRole("User");
 		muserdetail.setEnabled(true);
 		muserdetail.setUsername(username);
-		muserdetail.setCustname(custName);
+		muserdetail.setCustname(custname);
 		muserdetail.setAddress(address);
 		muserdetail.setEmail(email);
 		muserdetail.setMobile(mobile);
 		muserdetail.setPassword(password);
 		
 		
-				
+		userdetailDAO.validateEmail(email);
+		if(muserdetail!=null)
+		{
+			m.addAttribute("duplicateEmail","Email already exists!Please enter different Email Id!");
+		}
 
+	    
+		userdetailDAO.validateCustomername(custname);
+		if(muserdetail!=null)
+		{
+		    m.addAttribute("duplicateCustomername","Customername already exists!Please enter different Customername");	
+		}
+		
+		
 		userdetailDAO.insertUpdateUserDetail(muserdetail);
-	
-		 
 		List<UserDetail> list = userdetailDAO.getUserDetailDetails();
 		m.addAttribute("UserDetail", list);
 

@@ -1,4 +1,5 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container">
 
 <!-- Breadcrumb -->
@@ -42,15 +43,13 @@
           <p>${product.proddesc}</p>
           <hr/>
           
-          <h6 style="font-size:20px;">Price: <strong> &#8377; ${product.price} /-</strong></h4>
+          <h6 style="font-size:20px;">Price: <strong> &#8377; ${product.price} /-</strong></h6>
           <hr/>
-          
-          <h6 style="font-size:20px;">Quantity Available: ${product.quantity}</h6>
-           <hr/>
            
+          
            <c:choose>
                    <c:when test="${product.quantity <1}">
-                 <h6 style="font-size:20px;">Quantity Available <span style="color:red">Out Of Stock!</span></h6>
+                 <h6 style="font-size:20px;">Quantity Available: <span style="color:red">Out Of Stock!</span></h6>
                         
                    </c:when>
                    <c:otherwise>
@@ -64,13 +63,13 @@
                    <c:when test="${product.quantity <1}">
                  
                            <a class="btn btn-success disabled" href="javascript:void(0)"><strike>
-            				<i class="material-icons">shopping_cart</i></span>Add To Cart</strike></a>
+            				<i class="material-icons">shopping_cart</i>Add To Cart</strike></a>
                            
                    </c:when>
                    <c:otherwise>
                          
                          <a class="btn btn-success" href="${contextRoot}/cart/add/${product.prodid}/product">
-                        <i class="material-icons">shopping_cart</i></span>Add To Cart</a>
+                        <i class="material-icons">shopping_cart</i>Add To Cart</a>
                          
                          
                    </c:otherwise>
@@ -80,8 +79,7 @@
              <security:authorize access="hasAuthority('ADMIN')">
             
                          <a class="btn btn-warning" href="${contextRoot}/manage/${product.prodid}/product">
-                       <i class="material-icons">mode_edit</i></span>Edit</a>
-                           
+                       <i class="material-icons">mode_edit</i>Edit</a>               
          </security:authorize>
           
                       

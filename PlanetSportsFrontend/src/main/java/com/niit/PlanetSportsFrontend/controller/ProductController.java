@@ -84,11 +84,11 @@ public class ProductController
     
 
     //For the Deleting the Product
-    @RequestMapping(value="/{prodid}/delete/product",method=RequestMethod.POST)
+    @RequestMapping(value="/{prodid}/delete/product",method=RequestMethod.GET)
     public String showDeleteProducts(@PathVariable int prodid,Model model)
     {
     	
-       /* ModelAndView mv=new ModelAndView("index");
+       /* ModelAndView mv=new ModelAndView("index");1
         mv.addObject("userClickManageProducts",true);
         mv.addObject("title","Manage Products");
         
