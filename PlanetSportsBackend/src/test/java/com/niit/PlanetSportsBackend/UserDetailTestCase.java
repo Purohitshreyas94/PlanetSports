@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.PlanetSportsBackend.dao.UserDetailDAO;
-
+import com.niit.PlanetSportsBackend.model.Cart;
 import com.niit.PlanetSportsBackend.model.UserDetail;
 
 
@@ -23,7 +23,7 @@ public class UserDetailTestCase
 		UserDetailDAO userdetailDAO=(UserDetailDAO)context.getBean("userdetailDAO");
 		
 		//Inserting Test Case
-	 	UserDetail userdetail=new UserDetail();
+	 /*	UserDetail userdetail=new UserDetail();
 		 userdetail.setUsername("Shreyas Purohit");
 		 userdetail.setAddress("1121/E,Vasant Villa, Sykes Extension, Kolhapur");
 	    userdetail.setCustname("sniper_1994");
@@ -35,22 +35,31 @@ public class UserDetailTestCase
 	   
 		userdetailDAO.insertUpdateUserDetail(userdetail);
 		System.out.println("User Details Inserted..");
-		
-	/*	UserDetail userdetail=new UserDetail();
-		 userdetail.setUsername("Harish Mehata");
-		 userdetail.setAddress("Thane");
-	    userdetail.setCustname("Harish10");
-	    userdetail.setEmail("hr@gmail.com");
+	*/	
+		UserDetail userdetail=new UserDetail();
+		Cart cart=new Cart();
+		 userdetail.setUsername("Shreyas Purohit");
+		 userdetail.setAddress("Mumbai");
+	    userdetail.setCustname("shreyas@1994");
+	    userdetail.setEmail("purohitshreyas94@gmail.com");
 	    userdetail.setEnabled(true);
-	    userdetail.setMobile("1234567893");
-	    userdetail.setPassword("1234");
+	    userdetail.setMobile("8446530101");
+	    userdetail.setPassword("sh@123");
 	    userdetail.setRole("USER");
 	    
-	  */  
+	    if(userdetail.getRole().equals("USER"))
+	    {
+	    	cart=new Cart();
+	    	cart.setUserdetail(userdetail);
+	    	userdetail.setCart(cart);
+	    	
+	    }
+	    
+	    
 		userdetailDAO.insertUpdateUserDetail(userdetail);
 		System.out.println("User Details Inserted..");
 		
-		
+	
 		//Retrieval TestCase
 		 /*
 		UserDetail userdetail=userdetailDAO.getUserDetail("shreyas");

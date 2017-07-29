@@ -1,4 +1,5 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
@@ -11,7 +12,7 @@
       <a class="navbar-brand" href="${contextRoot}/index">PLANET SPORTS</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
         <li><a href="${contextRoot}/index">Home</a></li>
         
         <security:authorize access="isAnonymous()">
@@ -29,9 +30,17 @@
           </ul>
         </li>
         <li id=listProduct><a href="${contextRoot}/show/all/products">Products</a></li>
+       
+		<li>
+			<c:if test="${pageContext.request.userPrincipal.name!=null }">
+			<a href="">Hello ${pageContext.request.userPrincipal.name }</a>
+			</c:if>
+		</li>
 		
 		
-		<security:authorize access="isAnonymous()">
+	
+		<ul class="nav navbar-nav navbar-right">
+		<c:if test="${pageContext.request.userPrincipal.name==null }">
 		<li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
           <span class="caret"></span></a>
@@ -40,18 +49,26 @@
             <li id=login><a href="${contextRoot}/login">Login</a></li>
           </ul>
         </li>
-        </security:authorize>
+       </c:if> 
+        
+        <c:if test="${pageContext.request.userPrincipal.name!=null }">
+        <li id=logout><a href="${contextRoot}/j_spring_security_logout">Logout</a></li>
+        </c:if>
+        </ul>
         
         
-        <security:authorize access="hasAuthority('ADMIN')">
+      
+          <c:if test="${pageContext.request.userPrincipal.name!=null }">
+          <security:authorize access="hasAuthority('ADMIN')">
         <li id="manageProducts">
          <a href="${contextRoot}/manage/products">Manage Products</a>
          </li>		
         <li id="manageCategories">
          <a href="${contextRoot}/manage/category">Manage Category</a>
          </li>
+       
          </security:authorize>
-         
+         </c:if>
          
       </ul>
     </div>

@@ -14,13 +14,13 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+import com.niit.PlanetSportsBackend.dao.CartItemDAO;
 import com.niit.PlanetSportsBackend.dao.CategoryDAO;
 import com.niit.PlanetSportsBackend.dao.SupplierDAO;
 import com.niit.PlanetSportsBackend.dao.UserDetailDAO;
 import com.niit.PlanetSportsBackend.dao.ProductDAO;
-
-
+import com.niit.PlanetSportsBackend.model.Cart;
+import com.niit.PlanetSportsBackend.model.CartItem;
 import com.niit.PlanetSportsBackend.model.Category;
 import com.niit.PlanetSportsBackend.model.Product;
 import com.niit.PlanetSportsBackend.model.Supplier;
@@ -63,6 +63,8 @@ public class DBConfig
 		   sessionBuilder.addAnnotatedClass(Supplier.class);
 		   sessionBuilder.addAnnotatedClass(Product.class);
 		   sessionBuilder.addAnnotatedClass(UserDetail.class);
+		   sessionBuilder.addAnnotatedClass(Cart.class);
+		   sessionBuilder.addAnnotatedClass(CartItem.class);
 		  // sessionBuilder.addAnnotatedClass(Cart.class);
 		   System.out.println("------Session Factory  object creation------");
 		   SessionFactory sessionFactory=sessionBuilder.buildSessionFactory();
@@ -122,7 +124,14 @@ public class DBConfig
         System.out.println("-----Cart DAO object Creation------");
 		return new CartDAO(sessionFactory);
        
-	   }*/	   
+	   }*/	
+	   @Autowired
+	   @Bean(name="cartItemDAO")
+	   public CartItemDAO getCartItemDAO(SessionFactory sessionFactory)
+	   {
+        System.out.println("-----CartItem DAO object Creation------");
+		return new CartItemDAO(sessionFactory);
+	   }
 }
 
 

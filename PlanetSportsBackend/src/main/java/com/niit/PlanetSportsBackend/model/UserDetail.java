@@ -1,9 +1,12 @@
 package com.niit.PlanetSportsBackend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,27 +14,38 @@ import javax.persistence.Table;
 public class UserDetail 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	int userid;
 	
 	String username,password,custname,role,email,address,mobile;
 	boolean enabled = true;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cart_id")
+	Cart cart;
 	
-	public  UserDetail()
-	{
 		
-	}
 	
+	public int getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+
+	public Cart getCart() {
+		return cart;
+	}
+
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+
 	
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 
 	public String getUsername() {
 		return username;
