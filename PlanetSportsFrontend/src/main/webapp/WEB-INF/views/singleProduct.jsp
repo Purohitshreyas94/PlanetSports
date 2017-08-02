@@ -63,14 +63,16 @@
                    <c:when test="${product.quantity <1}">
                  
                            <a class="btn btn-success disabled" href="javascript:void(0)"><strike>
-            				<i class="material-icons">shopping_cart</i>Add To Cart</strike></a>
+            				<i class="material-icons">add_shopping_cart</i>Add To Cart</strike></a>
                            
                    </c:when>
                    <c:otherwise>
                          
-                         <a class="btn btn-success" href="${contextRoot}/cart/add/${product.prodid}/product">
-                        <i class="material-icons">shopping_cart</i>Add To Cart</a>
-                         
+                        <form action="${contextRoot}/cart/add/${product.prodid}/product">
+                        Enter Units:<input type="text" name="units"><br>
+                        <button type="submit" class="btn btn-success">
+                        <i class="material-icons">add_shopping_cart</i></button>
+                         </form>
                          
                    </c:otherwise>
            </c:choose>

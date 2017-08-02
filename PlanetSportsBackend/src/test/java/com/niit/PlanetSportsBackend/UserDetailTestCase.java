@@ -38,22 +38,20 @@ public class UserDetailTestCase
 	*/	
 		UserDetail userdetail=new UserDetail();
 		Cart cart=new Cart();
-		 userdetail.setUsername("Shreyas Purohit");
-		 userdetail.setAddress("Mumbai");
-	    userdetail.setCustname("shreyas@1994");
-	    userdetail.setEmail("purohitshreyas94@gmail.com");
+		 userdetail.setUsername("Shreyas");
+		 userdetail.setAddress("Kolhapur");
+	    userdetail.setCustname("shreyas@94");
+	    userdetail.setEmail("shreyas@gmail.com");
 	    userdetail.setEnabled(true);
 	    userdetail.setMobile("8446530101");
-	    userdetail.setPassword("sh@123");
+	    userdetail.setPassword("1234");
 	    userdetail.setRole("USER");
-	    
-	    if(userdetail.getRole().equals("USER"))
-	    {
+	   
 	    	cart=new Cart();
 	    	cart.setUserdetail(userdetail);
 	    	userdetail.setCart(cart);
 	    	
-	    }
+	    
 	    
 	    
 		userdetailDAO.insertUpdateUserDetail(userdetail);

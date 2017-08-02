@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -40,8 +41,21 @@ public class UserDetailDAO
     	return userdetail;
     }
     
+    public UserDetail getByUsername(String username)
+    {
+    	String selectQuery = "FROM UserDetail WHERE username = :username";
+    	 try{
+    		return sessionFactory.getCurrentSession()
+    				.createQuery(selectQuery,UserDetail.class)
+    				.setParameter("username", username)
+    				.getSingleResult();
+    	 }
+    	catch(Exception ex)
+    	 {
+    		return null;
+    	 }
+    }
     
-	@SuppressWarnings("deprecation")
 	@Transactional
 	public UserDetail validateUsername(String username)
     {
@@ -52,8 +66,6 @@ public class UserDetailDAO
          return userdetail;	
     }   
 	
-    
-    @SuppressWarnings("deprecation")
     @Transactional
 	public UserDetail validateEmail(String email)
     {
@@ -64,7 +76,6 @@ public class UserDetailDAO
          return userdetail;	
     }
     
-    @SuppressWarnings("deprecation")
     @Transactional
 	public UserDetail validateCustomername(String custname)
     {

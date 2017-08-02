@@ -37,6 +37,9 @@
 			</c:if>
 		</li>
 		
+		<security:authorize access="hasAuthority('USER')">
+       <li id="cart"><a href="${contextRoot}/cart/getcart">Cart</a></li> 
+      	</security:authorize>
 		
 	
 		<ul class="nav navbar-nav navbar-right">

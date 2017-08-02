@@ -49,7 +49,14 @@ public class CartItemDAO
 			session.delete(cartItem);
 		}
 	}
-  
+    
+	@Transactional
+	public Cart getCart(int cartid)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		Cart cart=(Cart)session.get(Cart.class,cartid);
+		return cart;		
+	}
 
 }
 

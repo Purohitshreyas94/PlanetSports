@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.niit.PlanetSportsBackend.dao.CategoryDAO;
 import com.niit.PlanetSportsBackend.dao.ProductDAO;
 import com.niit.PlanetSportsBackend.dao.UserDetailDAO;
+import com.niit.PlanetSportsBackend.model.Cart;
 import com.niit.PlanetSportsBackend.model.Product;
 import com.niit.PlanetSportsBackend.model.UserDetail;
 
@@ -60,7 +61,10 @@ public class UserController {
 			@RequestParam("mobile") String mobile,@RequestParam("address") String address,UserDetail muserdetail, Model m) {
 		System.out.println("---Add User Starting-----");
 		
-		muserdetail.setRole("User");
+		Cart cart=new Cart();
+		
+		
+		muserdetail.setRole("USER");
 		muserdetail.setEnabled(true);
 		muserdetail.setUsername(username);
 		muserdetail.setCustname(custname);
@@ -68,6 +72,14 @@ public class UserController {
 		muserdetail.setEmail(email);
 		muserdetail.setMobile(mobile);
 		muserdetail.setPassword(password);
+		cart.setUserdetail(muserdetail);
+		muserdetail.setCart(cart);
+		
+		userdetailDAO.validateUsername(username);
+		if(muserdetail!=null)
+		{
+			m.addAttribute("duplicateUsername","Username already exists!Please try with new one!");
+		}
 		
 		
 		userdetailDAO.validateEmail(email);
@@ -85,8 +97,8 @@ public class UserController {
 		
 		
 		userdetailDAO.insertUpdateUserDetail(muserdetail);
-		List<UserDetail> list = userdetailDAO.getUserDetailDetails();
-		m.addAttribute("UserDetail", list);
+		//List<UserDetail> list = userdetailDAO.getUserDetailDetails();
+		//m.addAttribute("UserDetail", list);
 
 		System.out.println("---User Added----");
 		return "redirect:/register/user?operation=userdetail";

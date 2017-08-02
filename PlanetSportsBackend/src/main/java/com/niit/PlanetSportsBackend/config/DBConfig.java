@@ -18,6 +18,7 @@ import com.niit.PlanetSportsBackend.dao.CartItemDAO;
 import com.niit.PlanetSportsBackend.dao.CategoryDAO;
 import com.niit.PlanetSportsBackend.dao.SupplierDAO;
 import com.niit.PlanetSportsBackend.dao.UserDetailDAO;
+import com.niit.PlanetSportsBackend.dao.UserOrderDAO;
 import com.niit.PlanetSportsBackend.dao.ProductDAO;
 import com.niit.PlanetSportsBackend.model.Cart;
 import com.niit.PlanetSportsBackend.model.CartItem;
@@ -25,6 +26,7 @@ import com.niit.PlanetSportsBackend.model.Category;
 import com.niit.PlanetSportsBackend.model.Product;
 import com.niit.PlanetSportsBackend.model.Supplier;
 import com.niit.PlanetSportsBackend.model.UserDetail;
+import com.niit.PlanetSportsBackend.model.UserOrder;
 
 @Configuration
 @ComponentScan("com.niit.PlanetSportsBackend")
@@ -65,6 +67,7 @@ public class DBConfig
 		   sessionBuilder.addAnnotatedClass(UserDetail.class);
 		   sessionBuilder.addAnnotatedClass(Cart.class);
 		   sessionBuilder.addAnnotatedClass(CartItem.class);
+		   sessionBuilder.addAnnotatedClass(UserOrder.class);
 		  // sessionBuilder.addAnnotatedClass(Cart.class);
 		   System.out.println("------Session Factory  object creation------");
 		   SessionFactory sessionFactory=sessionBuilder.buildSessionFactory();
@@ -131,6 +134,14 @@ public class DBConfig
 	   {
         System.out.println("-----CartItem DAO object Creation------");
 		return new CartItemDAO(sessionFactory);
+	   }
+	   
+	   @Autowired
+	   @Bean(name="userOrderDAO")
+	   public UserOrderDAO getUserOrderDAO(SessionFactory sessionFactory)
+	   {
+        System.out.println("-----UserOrder DAO object Creation------");
+		return new UserOrderDAO(sessionFactory);
 	   }
 }
 
