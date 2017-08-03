@@ -69,7 +69,7 @@
                    <c:otherwise>
                          
                         <form action="${contextRoot}/cart/add/${product.prodid}/product">
-                        Enter Units:<input type="text" name="units"><br>
+                        <h6 style="font-size:20px;">Enter Units:<input type="text" name="units"></h6><br>
                         <button type="submit" class="btn btn-success">
                         <i class="material-icons">add_shopping_cart</i></button>
                          </form>

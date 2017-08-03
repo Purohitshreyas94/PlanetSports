@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.niit.PlanetSportsBackend.model.Cart;
 import com.niit.PlanetSportsBackend.model.UserDetail;
 
 @Repository("userdetailDAO")
@@ -27,7 +27,13 @@ public class UserDetailDAO
     @Transactional
 	public void insertUpdateUserDetail(UserDetail userdetail)
 	{
+    	
 		Session session=sessionFactory.getCurrentSession();
+		userdetail.setEnabled(true);
+		userdetail.setRole("USER");
+		Cart cart=new Cart();
+		cart.setUserdetail(userdetail);
+		userdetail.setCart(cart);
 		session.saveOrUpdate(userdetail);
 	}
    
@@ -41,6 +47,7 @@ public class UserDetailDAO
     	return userdetail;
     }
     
+    @Transactional
     public UserDetail getByUsername(String username)
     {
     	String selectQuery = "FROM UserDetail WHERE username = :username";

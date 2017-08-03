@@ -37,14 +37,14 @@ public class GlobalDefaultExcpetionHandler
 		
 		return mv;
 	}
-	
+	/*
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handlerForException(Exception ex)
 	{
 		ModelAndView mv = new ModelAndView("error");
 		mv.addObject("errorTitle", "Contact your Admin!..");
 		
-		/*Only for debugging application*/
+		/*Only for debugging application
 		StringWriter sw=new StringWriter();
 		PrintWriter pw=new PrintWriter(sw);
 		
@@ -55,5 +55,5 @@ public class GlobalDefaultExcpetionHandler
 		mv.addObject("title","Error");		
 		
 		return mv;
-	}
+	}*/
  }

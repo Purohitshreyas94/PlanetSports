@@ -46,8 +46,8 @@ public class CartItemController
   		String username=user.getUsername();
   		 UserDetail userdetail=userdetailDAO.getByUsername(username);
   		 System.out.println("get cart method after 47 line");
-  		 Cart cart=userdetail.getCart();
-  		 mv.addObject("cart", cart);
+  		Cart cart=userdetail.getCart();
+  		 model.addAttribute("cart", cart);
   		 return mv;
       }
             
@@ -55,9 +55,9 @@ public class CartItemController
 	@RequestMapping("/cart/add/{prodid}/product")
 	public String addCartItem(@PathVariable int prodid, @RequestParam int units,Model model)
 	{
-	  // ModelAndView mv=new ModelAndView("index");
-	  // mv.addObject("userClickCart",true);
-      // mv.addObject("title","Cart");
+	  ModelAndView mv=new ModelAndView("index");
+	   mv.addObject("userClickCart",true);
+       mv.addObject("title","Cart");
 		Product product=proudctDAO.getProduct(prodid);
 		
    //To get the user details, get the Principal object from securitycontextholder

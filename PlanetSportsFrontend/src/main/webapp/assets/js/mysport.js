@@ -19,6 +19,10 @@ $(function()
 		$('#manageProducts').addClass('active');
 		break;
 	
+	case 'Cart':
+		$('#cart').addClass('active');
+		break;
+		
 	default:
 		if(menu == "Home") break;
      	$('#listProduct').addClass('active');
@@ -88,18 +92,8 @@ $(function()
 	        			        	   mRender: function(data, type, row){
 	        			        	   var str = '';
 	        			        	   str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-primary"><i class="material-icons">visibility</i></a> &#160;';
-	        			        	   
-	        			        	   if(row.quantity < 1)
-	        			        	   {
-	        			        		      str += '<a href="javascript:void(0)" class="btn btn-success disabled"><i class="material-icons">shopping_cart</i></a>';
-	        			        	   }
-	        			        	   else
-	        			        	  {
-	        			        		   
-	        			        	   str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-success"><i class="material-icons">shopping_cart</i></a>';
-	        			        	  
-	        			        	  }
-	        			        	   return str;
+	        			       
+	        		              	   return str;
 	        			        	   
 	        			        	   }
 	        			          

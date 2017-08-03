@@ -61,20 +61,13 @@ public class UserController {
 			@RequestParam("mobile") String mobile,@RequestParam("address") String address,UserDetail muserdetail, Model m) {
 		System.out.println("---Add User Starting-----");
 		
-		Cart cart=new Cart();
-		
-		
-		muserdetail.setRole("USER");
-		muserdetail.setEnabled(true);
 		muserdetail.setUsername(username);
 		muserdetail.setCustname(custname);
 		muserdetail.setAddress(address);
 		muserdetail.setEmail(email);
 		muserdetail.setMobile(mobile);
 		muserdetail.setPassword(password);
-		cart.setUserdetail(muserdetail);
-		muserdetail.setCart(cart);
-		
+				
 		userdetailDAO.validateUsername(username);
 		if(muserdetail!=null)
 		{

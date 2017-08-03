@@ -1,11 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div class="container">
 <div class="row">
-<div class="row">
+<div class="col-sm-6">
 <a href="${contextRoot}/cart/clearcart/${cart.cartid}" class="btn btn-danger pull-left ">
-<i class="material-icons">remove_circle</i>Clear Cart
-</a>
+<i class="material-icons">remove_circle</i></a>
+</div>
+
+
+<div class="col-sm-6">
 <a href="${contextRoot}/cart/order/${cart.cartid}" class="btn btn-success pull-right ">
 <i class="material-icons">check</i>Check Out</a>
+</div>
+</div>
 <table class="table table-striped">
 <thead>
 <tr><th>Name</th><th>Quantity</th><th>Total Price</th><th>Remove</th>
@@ -17,9 +23,9 @@
 <td>${cartItem.product.prodname}</td>
 <td>${cartItem.quantity}</td>
 <td>${cartItem.totalPrice}</td>
-<td><a href="${contextRoot}/cart/removecartitem/${cartItem.cartItemId}" class="btn btn-danger btn-xs pull-left ">
+<td><a href="${contextRoot}/cart/removecartitem/${cartItem.cartItemId}" class="btn btn-danger pull-left ">
 <c:set var="grandTotal" value="${cartItem.totalPrice + grandTotal}"></c:set>	
-<i class="material-icons">remove</i>Remove
+<i class="material-icons">remove</i>
 </a></td>
 <td></td>
 </tr>
@@ -27,5 +33,5 @@
 </table>
 Total Price:${grandTotal}
 
-</div>
+
 </div>
