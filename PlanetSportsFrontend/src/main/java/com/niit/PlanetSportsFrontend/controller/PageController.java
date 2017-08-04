@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.PlanetSportsBackend.dao.CartItemDAO;
 import com.niit.PlanetSportsBackend.dao.CategoryDAO;
 import com.niit.PlanetSportsBackend.dao.ProductDAO;
 import com.niit.PlanetSportsBackend.dao.UserDetailDAO;
+import com.niit.PlanetSportsBackend.dao.UserOrderDAO;
+import com.niit.PlanetSportsBackend.model.Cart;
 import com.niit.PlanetSportsBackend.model.Category;
 import com.niit.PlanetSportsBackend.model.Product;
 import com.niit.PlanetSportsBackend.model.UserDetail;
+import com.niit.PlanetSportsBackend.model.UserOrder;
 import com.niit.PlanetSportsFrontend.exception.ProductNotFoundException;
 
 @Controller
@@ -30,6 +34,12 @@ public class PageController
     
     @Autowired
     UserDetailDAO userdetailDAO;
+    
+    @Autowired
+	 UserOrderDAO userorderDAO;
+    
+	 @Autowired
+	 CartItemDAO cartitemDAO;
 	
   	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView index()
@@ -135,8 +145,6 @@ public class PageController
   		
   	}
   	
-  	  	
-  	
   	
   	//Access denied page
 	@RequestMapping(value ="/access-denied")
@@ -148,7 +156,24 @@ public class PageController
 	   mv.addObject("errorDescription","You are not authorized to view this Page!");
 		return mv;   
    }
-  	
+	
+	
+	//Showing Order detail
+	@RequestMapping("/cart/{cartid}/order")
+	public ModelAndView createOrder(@PathVariable int cartid,Model model)
+	{
+		   ModelAndView mv=new ModelAndView("index");
+		   mv.addObject("userClickOrder", true);
+		   mv.addObject("title", "Order");
+			Cart cart=cartitemDAO.getCart(cartid);
+			UserDetail userdetail=cart.getUserdetail();
+		    cart.setUserdetail(userdetail);
+		UserOrder userorder=userorderDAO.createOrder(cart);
+		model.addAttribute("order",userorder);
+		model.addAttribute("cartid",cartid);
+	//	return "orderdetails";
+		return mv;
+	}
   	
   	
 } 

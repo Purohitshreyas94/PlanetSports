@@ -105,6 +105,11 @@
   <%@include file="singleProduct.jsp" %>
 </c:if>
 
+<!-- Load Only When user Click Order -->
+<c:if test="${userClickOrder == true}">
+  <%@include file="orderdetails.jsp" %>
+</c:if>
+
 
 <!-- Add Google Maps -->
 

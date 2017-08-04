@@ -3,6 +3,8 @@ package com.niit.PlanetSportsBackend.dao;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ public class UserOrderDAO
 		this.sessionFactory=sessionFactory;
 	}
 	
+	@Transactional
 	public UserOrder createOrder(Cart cart)
 	{
 		Session session=sessionFactory.getCurrentSession();
@@ -42,6 +45,7 @@ public class UserOrderDAO
 		userorder.setPurchaseDate(new Date());
 		userorder.setCart(cart);
 		userorder.setUserdetail(userdetail);
+		
 		session.save(userorder);//insert, also execute update queries for other tables
 		  return userorder;
 	}

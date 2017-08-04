@@ -8,8 +8,8 @@
 
 
 <div class="col-sm-6">
-<a href="${contextRoot}/cart/order/${cart.cartid}" class="btn btn-success pull-right ">
-<i class="material-icons">check</i>Check Out</a>
+<a href="${contextRoot}/cart/${cart.cartid}/order" class="btn btn-success pull-right ">
+Check Out</a>
 </div>
 </div>
 <table class="table table-striped">
