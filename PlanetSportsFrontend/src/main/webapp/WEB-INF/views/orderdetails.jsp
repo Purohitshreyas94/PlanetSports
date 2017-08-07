@@ -14,7 +14,6 @@
 
         <div class="container">
         <form:form  action="${contextRoot}/cart/confirm/${cart.cartid}" modelAttribute="order">
-        
             <div class="row">
 
                              <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
@@ -32,7 +31,7 @@
                                 </address>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                                <p>Shipping Date: <fmt:formatDate type="date" value="${now}" /></p>
+                                <p>Shipping Date: <fmt:formatDate type="date" value="${now}"></fmt:formatDate></p>
                             </div>
                         </div>
 

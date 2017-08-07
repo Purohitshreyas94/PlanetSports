@@ -65,6 +65,10 @@
    <%@include file="about.jsp" %>
 </c:if>
 
+<!-- Load Only When user Click About -->
+<c:if test="${userClickContact == true}">
+   <%@include file="contact.jsp" %>
+</c:if>
 
   
 <!-- Load Only When user Click Account --> 
@@ -86,7 +90,7 @@
 
 <!-- Load Only When user Click Cart -->
 <c:if test="${userClickCart == true}">
-  <%@include file="cart.jsp" %>
+  <%@include file="cart1.jsp" %>
 </c:if>
 
 <!-- Load Only When user Click Manage Product -->
@@ -107,10 +111,13 @@
 
 <!-- Load Only When user Click Order -->
 <c:if test="${userClickOrder == true}">
-  <%@include file="orderdetails.jsp" %>
+  <%@include file="Order.jsp" %>
 </c:if>
 
-
+<!-- Load Only When user Click Order -->
+<c:if test="${userClickConfirmOrder == true}">
+  <%@include file="visitagain.jsp" %>
+</c:if>
 <!-- Add Google Maps -->
 
 

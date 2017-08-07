@@ -93,7 +93,7 @@ public class CategoryController
 		categoryDAO.deleteCategory(category);
 
         
-        //fetch the product from Database
+        //fetch the category from Database
        // Category category = categoryDAO.getCategory(catid);
         //categoryDAO.deleteCategory(category);
         

@@ -1,6 +1,7 @@
 package com.niit.PlanetSportsBackend.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +17,15 @@ public class UserDetail
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int userid;
-	
-	String username,password,custname,role,email,address,mobile;
+	@Column(unique=true)
+	String username;
+	String password;
+	@Column(unique=true)
+	String custname;
+	@Column(unique=true)
+	String email;
+	String role;
+	String address,mobile;
 	boolean enabled = true;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cart_id")

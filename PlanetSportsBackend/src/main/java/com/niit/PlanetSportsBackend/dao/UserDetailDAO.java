@@ -63,7 +63,9 @@ public class UserDetailDAO
     	 }
     }
     
+	
 	@Transactional
+	@SuppressWarnings("deprecation")
 	public UserDetail validateUsername(String username)
     {
 		 Session session=sessionFactory.getCurrentSession();
@@ -73,17 +75,21 @@ public class UserDetailDAO
          return userdetail;	
     }   
 	
-    @Transactional
+   
+	@Transactional
+	 @SuppressWarnings("deprecation")
 	public UserDetail validateEmail(String email)
     {
 		 Session session=sessionFactory.getCurrentSession();
 		 Query query=session.createQuery("from UserDetail where email=?");
-		 query.setString(0,email);
+		 query.setString(0, email);
 		 UserDetail userdetail=(UserDetail) query.uniqueResult();   
          return userdetail;	
     }
     
-    @Transactional
+    
+	@Transactional
+	@SuppressWarnings("deprecation")
 	public UserDetail validateCustomername(String custname)
     {
 		 Session session=sessionFactory.getCurrentSession();

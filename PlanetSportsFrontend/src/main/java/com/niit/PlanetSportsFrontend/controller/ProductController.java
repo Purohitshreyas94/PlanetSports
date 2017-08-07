@@ -100,7 +100,7 @@ public class ProductController
 		Product product=productDAO.getProduct(prodid);
 		productDAO.deleteProduct(product);
                                                
-		return "redirect:/manage/product";
+		return "redirect:/manage/products";
     
     }
     

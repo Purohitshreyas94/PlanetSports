@@ -44,7 +44,9 @@ public class UserOrderDAO
 		UserOrder userorder=new UserOrder();
 		userorder.setPurchaseDate(new Date());
 		userorder.setCart(cart);
+		//userdetail.setAddress(userdetail.getAddress());
 		userorder.setUserdetail(userdetail);
+		
 		
 		session.save(userorder);//insert, also execute update queries for other tables
 		  return userorder;

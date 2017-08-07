@@ -1,20 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container">
-<div class="row">
-<div class="col-sm-6">
-<a href="${contextRoot}/cart/clearcart/${cart.cartid}" class="btn btn-danger pull-left ">
-<i class="material-icons">remove_circle</i></a>
-</div>
 
 
-<div class="col-sm-6">
-<a href="${contextRoot}/cart/${cart.cartid}/order" class="btn btn-success pull-right ">
-Check Out</a>
-</div>
-</div>
 <table class="table table-striped">
 <thead>
-<tr><th>Name</th><th>Quantity</th><th>Total Price</th><th>Remove</th>
+<tr><th>Name</th><th>Quantity</th><th>Subtotal</th><th>Remove</th>
 </tr>
 </thead>
 <c:set var="grandTotal" value="0"></c:set>
@@ -31,7 +21,22 @@ Check Out</a>
 </tr>
 </c:forEach> 
 </table>
-Total Price:${grandTotal}
+<br>
+<div class="row">
+<div class="col-sm-6">
+<a href="${contextRoot}/cart/clearcart/${cart.cartid}" class="btn btn-danger pull-left ">
+<i class="material-icons">remove_circle</i></a>
+</div>
+<div class="col-sm-3">
+ <h6><b>Total Price:- ${grandTotal}</b></h6>
+</div>
+
+<div class="col-sm-3">
+<a href="${contextRoot}/cart/${cart.cartid}/order" class="btn btn-success pull-right ">
+Check Out</a>
+<input type="hidden" name="cartid"/>
+</div>
+</div>
 
 
 </div>

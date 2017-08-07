@@ -7,6 +7,10 @@ $(function()
 		$('#about').addClass('active');
 		break;
 	
+	case 'Contact':
+		$('#contact').addClass('active');
+		break;
+		
 	case 'Sign Up':
 		$('#signup').addClass('active');
 		break;

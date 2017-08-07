@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,16 +64,17 @@ public class PageController
 		return mv;   
    }
   	
-  /*	@RequestMapping(value= "/signup")
-	public  ModelAndView showSignup()
+	@RequestMapping(value = "/contact")
+	public ModelAndView showContact()
    {
-  		ModelAndView mv=new ModelAndView("index");
- 	   System.out.println("Signup page displaying..");
- 	   mv.addObject("title","Signup");
- 	   mv.addObject("userClickSignup",true);
- 		return mv;   
-   }*/ 
+		ModelAndView mv=new ModelAndView("index");
+	   System.out.println("Contact page displaying..");
+	   mv.addObject("title","Contact Us");
+	   mv.addObject("userClickContact",true);
+		return mv;   
+   }
   	
+   	
   	
   	/*This is for Login*/
   	
@@ -159,6 +161,7 @@ public class PageController
 	
 	
 	//Showing Order detail
+	
 	@RequestMapping("/cart/{cartid}/order")
 	public ModelAndView createOrder(@PathVariable int cartid,Model model)
 	{
@@ -174,7 +177,17 @@ public class PageController
 	//	return "orderdetails";
 		return mv;
 	}
-  	
+	
+	@RequestMapping("/cart/confirm/{cartid}")
+	public ModelAndView confirm(@ModelAttribute UserOrder order,@PathVariable int cartid)
+	{
+		ModelAndView mv=new ModelAndView("index");	
+		   mv.addObject("userClickConfirmOrder", true);
+		   mv.addObject("title", "Visit Again!");
+		cartitemDAO.removeAllCartItem(cartid);
+		//return "thanks";
+	   return mv;
+	}
   	
 } 
 

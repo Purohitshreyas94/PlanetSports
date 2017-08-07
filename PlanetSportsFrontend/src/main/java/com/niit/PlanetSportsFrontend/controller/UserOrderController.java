@@ -19,7 +19,7 @@ public class UserOrderController
 	 UserOrderDAO userorderDAO;
 	 @Autowired
 	 CartItemDAO cartitemDAO;
-
+/*
 	@RequestMapping("/cart/{cartid}/order")
 	public ModelAndView createOrder(@PathVariable int cartid,Model model)
 	{
@@ -36,7 +36,8 @@ public class UserOrderController
 		return mv;
 	}
 	
-	@RequestMapping("/cart/confirm/{cartid}")
+	
+	@RequestMapping("/cart/{cartid}/confirm")
 	public ModelAndView confirm(@ModelAttribute UserOrder order,@PathVariable int cartid)
 	{
 		ModelAndView mv=new ModelAndView("index");
@@ -45,5 +46,5 @@ public class UserOrderController
 		//return "thanks";
 	   return mv;
 	}
-
+*/
 }
