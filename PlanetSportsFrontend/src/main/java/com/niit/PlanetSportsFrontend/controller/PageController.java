@@ -159,35 +159,6 @@ public class PageController
 		return mv;   
    }
 	
-	
-	//Showing Order detail
-	
-	@RequestMapping("/cart/{cartid}/order")
-	public ModelAndView createOrder(@PathVariable int cartid,Model model)
-	{
-		   ModelAndView mv=new ModelAndView("index");
-		   mv.addObject("userClickOrder", true);
-		   mv.addObject("title", "Order");
-			Cart cart=cartitemDAO.getCart(cartid);
-			UserDetail userdetail=cart.getUserdetail();
-		    cart.setUserdetail(userdetail);
-		UserOrder userorder=userorderDAO.createOrder(cart);
-		model.addAttribute("order",userorder);
-		model.addAttribute("cartid",cartid);
-	//	return "orderdetails";
-		return mv;
-	}
-	
-	@RequestMapping("/cart/confirm/{cartid}")
-	public ModelAndView confirm(@ModelAttribute UserOrder order,@PathVariable int cartid)
-	{
-		ModelAndView mv=new ModelAndView("index");	
-		   mv.addObject("userClickConfirmOrder", true);
-		   mv.addObject("title", "Visit Again!");
-		cartitemDAO.removeAllCartItem(cartid);
-		//return "thanks";
-	   return mv;
-	}
   	
 } 
 

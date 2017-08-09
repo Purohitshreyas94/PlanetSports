@@ -16,8 +16,11 @@
         <li><a href="${contextRoot}/index">Home</a></li>
         
         <security:authorize access="isAnonymous()">
-       <li id="about"><a href="${contextRoot}/about">About</a></li> 
-         <li id="contact"><a href="${contextRoot}/contact">Contact</a></li>
+       <li id="about"><a href="${contextRoot}/about">About</a></li>   
+		</security:authorize>
+		
+		<security:authorize access="hasAuthority('USER')">
+		<li id="contact"><a href="${contextRoot}/contact">Contact</a></li>
 		</security:authorize>
 		
 		<li class="dropdown">
@@ -38,13 +41,13 @@
 		</li>
 		
 		<security:authorize access="hasAuthority('USER')">
-       <li id="cart"><a href="${contextRoot}/cart/getcart">Cart</a></li> 
+       <li id="cart"><a href="${contextRoot}/cart/getcart"><i class="material-icons">shopping_cart</i></a></li> 
       	</security:authorize>
 		
 	
 		<ul class="nav navbar-nav navbar-right">
 		<c:if test="${pageContext.request.userPrincipal.name==null }">
-		<li class="dropdown">
+		<li id=myaccount class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account
           <span class="caret"></span></a>
           <ul class="dropdown-menu">

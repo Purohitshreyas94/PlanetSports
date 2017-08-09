@@ -39,7 +39,7 @@
 							<td class="text-center"><strong>Total:- ${grandTotal}</strong></td>
 						</tr>
 						<tr>
-						    <td><a href="${contextRoot}/cart/clearcart/${cart.cartid}" class="btn btn-warning"><i class="material-icons">remove_circle</i></a></td>
+						    <td><a href="${contextRoot}/show/all/products" class="btn btn-warning">Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total:- ${grandTotal}</strong></td>
 							<td><a href="${contextRoot}/cart/${cart.cartid}/order" class="btn btn-success btn-block">Checkout</a></td>

@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -69,7 +70,8 @@ public class UserDetailDAO
 	public UserDetail validateUsername(String username)
     {
 		 Session session=sessionFactory.getCurrentSession();
-		 Query query=session.createQuery("from UserDetail where username=?");
+		 @SuppressWarnings("rawtypes")
+		Query query=session.createQuery("from UserDetail where username=?");
 		  query.setString(0,username);
 		 UserDetail userdetail=(UserDetail) query.uniqueResult();   
          return userdetail;	
@@ -81,7 +83,8 @@ public class UserDetailDAO
 	public UserDetail validateEmail(String email)
     {
 		 Session session=sessionFactory.getCurrentSession();
-		 Query query=session.createQuery("from UserDetail where email=?");
+		 @SuppressWarnings("rawtypes")
+		Query query=session.createQuery("from UserDetail where email=?");
 		 query.setString(0, email);
 		 UserDetail userdetail=(UserDetail) query.uniqueResult();   
          return userdetail;	
@@ -99,53 +102,12 @@ public class UserDetailDAO
          return userdetail;	
     }
               
-       
-       /* //Adding Address
-       public boolean addAddress(Address address)
-       {
-
-   		try{
-
-   			Session session=sessionFactory.getCurrentSession();
-   			session.saveOrUpdate(address);
-   			return true;
-   		  }
-   		
-   		catch(Exception e)
-   		{
-   			 e.printStackTrace();
-       	     return false;
-   		}
-      	 
-       }
-       
-      
-       //Adding Cart
-      public boolean addCart(Cart cart)
-      {
-  		try{
-
-  			Session session=sessionFactory.getCurrentSession();
-  			session.saveOrUpdate(cart);
-  			return true;
-  		  }
-  		
-  		catch(Exception e)
-  		{
-  			 e.printStackTrace();
-      	     return false;
-  		}
-      }
-      
-      
-      
-      */
-
       
     
 	public List<UserDetail> getUserDetailDetails()
 	{
 		Session session=sessionFactory.openSession();
+		@SuppressWarnings("rawtypes")
 		Query query=session.createQuery("from UserDetail");
 		List<UserDetail> list=query.list();
 		session.close();

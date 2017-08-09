@@ -11,6 +11,11 @@ $(function()
 		$('#contact').addClass('active');
 		break;
 		
+
+	case 'My Account':
+		$('#myaccount').addClass('active');
+		break;
+		
 	case 'Sign Up':
 		$('#signup').addClass('active');
 		break;
