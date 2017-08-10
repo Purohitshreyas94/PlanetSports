@@ -32,6 +32,7 @@ public class UserOrderController
 				UserDetail userdetail=cart.getUserdetail();
 			    cart.setUserdetail(userdetail);
 			UserOrder userorder=userorderDAO.createOrder(cart);
+			model.addAttribute("cart",cart);
 			model.addAttribute("order",userorder);
 			model.addAttribute("cartid",cartid);
 		//	return "orderdetails";
@@ -39,11 +40,15 @@ public class UserOrderController
 		}
 		
 		@RequestMapping("/cart/confirm/{cartid}")
-		public ModelAndView confirm(@ModelAttribute UserOrder order,@PathVariable int cartid)
+		public ModelAndView confirm(@ModelAttribute UserOrder order,@PathVariable int cartid,Model model)
 		{
 			ModelAndView mv=new ModelAndView("index");	
 			   mv.addObject("userClickConfirmOrder", true);
 			   mv.addObject("title", "Visit Again!");
+			   
+			   model.addAttribute("order",order);
+			  
+			   
 			cartitemDAO.removeAllCartItem(cartid);
 			//return "thanks";
 		   return mv;

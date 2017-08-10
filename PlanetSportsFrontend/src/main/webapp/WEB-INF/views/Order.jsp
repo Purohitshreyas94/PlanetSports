@@ -17,7 +17,8 @@
 <div>
 <center>  
 <h4>Success - your order is confirmed!</h4>
-<h5>Order number: ${order.orderId}</h5>
+<h5>Order number: ORD${order.orderId}</h5>
+<h6>Payment Method:- Cash On Delivery</h6>
 <hr />  
 </div>
 </center>
