@@ -35,18 +35,14 @@
 					</tbody>
 					
 					<tfoot>
-						<tr class="visible-xs">
+						  <tr class="visible-xs">
 							<td class="text-center"><strong>Total:- ${grandTotal}</strong></td>
 						</tr>
 						<tr>
 						    <td><a href="${contextRoot}/show/all/products" class="btn btn-warning">Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total:- ${grandTotal}</strong></td>
+							<td class="hidden-xs text-center"><h6 style="font-size:20px;"><strong><b>Total:- ${grandTotal}</b></strong></h6></td>
 							<td><a href="${contextRoot}/cart/${cart.cartid}/order" class="btn btn-success btn-block">Checkout</a></td>
-							<!-- <td><form action="${contextRoot}/cart/${cart.cartid}/order" >
-							<input type="hidden" name="cartid">
-							<input type="submit" name="submit" value="Checkout"> 
-							</form></td> -->
 						</tr>
 					</tfoot>
 				</table>

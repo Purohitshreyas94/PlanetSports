@@ -22,6 +22,7 @@
 					<div class="input-field col col-md-6">
 					  <input id="username" name="username"type="text" class="validate"required >
 					  <label for="email"  class="active">User Name</label>
+					  <p style="color:red">${duplicateUsername}</p>
 					</div>
 					<div class="input-field col col-md-6">
 					  <input name="custname" id="custname" type="text" class="validate" required>

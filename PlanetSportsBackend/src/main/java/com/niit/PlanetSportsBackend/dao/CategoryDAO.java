@@ -29,6 +29,8 @@ public class CategoryDAO
 		Session session=sessionFactory.getCurrentSession();
 		session.saveOrUpdate(category);
 	}
+    
+    @Transactional
     public Category getCategory(int catid)
     {
 

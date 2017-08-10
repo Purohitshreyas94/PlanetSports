@@ -58,7 +58,7 @@ public class UserController {
 	@RequestMapping(value = "/user", method=RequestMethod.POST)
 	public String addUser(@RequestParam("username") String username, @RequestParam("custname") String custname,
 			@RequestParam("email") String email, @RequestParam("password") String password,
-			@RequestParam("mobile") String mobile,@RequestParam("address") String address,UserDetail muserdetail, Model m) {
+			@RequestParam("mobile") String mobile,@RequestParam("address") String address,UserDetail muserdetail, Model model) {
 		System.out.println("---Add User Starting-----");
 		
 		muserdetail.setUsername(username);
@@ -71,21 +71,21 @@ public class UserController {
 		userdetailDAO.validateUsername(username);
 		if(muserdetail!=null)
 		{
-			m.addAttribute("duplicateUsername","Username already exists!Please try with new one!");
+			model.addAttribute("duplicateUsername","Username already exists!Please try with new one!");
 		}
 		
 		
 		userdetailDAO.validateEmail(email);
 		if(muserdetail!=null)
 		{
-			m.addAttribute("duplicateEmail","Email already exists!Please enter different Email Id!");
+			model.addAttribute("duplicateEmail","Email already exists!Please enter different Email Id!");
 		}
 
 	    
 		userdetailDAO.validateCustomername(custname);
 		if(muserdetail!=null)
 		{
-		    m.addAttribute("duplicateCustomername","Customername already exists!Please enter different Customername");	
+		    model.addAttribute("duplicateCustomername","Customername already exists!Please enter different Customername");	
 		}
 		
 		

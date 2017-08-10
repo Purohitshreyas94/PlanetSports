@@ -60,6 +60,7 @@
     					<table class="table table-condensed">
     						<thead>
                                 <tr>
+                                     <td><strong>Product</strong></td>
         							<td><strong>Product Name</strong></td>
         							<td class="text-right"><strong>Quantity</strong></td>
             						<td class="text-right"><strong>Price</strong></td>
@@ -72,6 +73,7 @@
     						      <c:forEach var="cartItem" items="${order.cart.cartItems}">
     							<!-- foreach ($order->lineItems as $line) or some such thing here -->
     							<tr>
+    							    <td><img src="${images}/${cartItem.product.code}.jpg" alt="..."  class="adminDataTableImg"/></td>
     								<td><em>${cartItem.product.prodname}</em></td>
             						<td class="text-right">${cartItem.quantity}</td>
             						<td class="text-right">${cartItem.product.price}</td>
